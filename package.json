@@ -24,6 +24,7 @@
     "stylelint-config-standard": "^25.0.0"
   },
   "dependencies": {
-    "bulma": "^0.9.3"
+    "bulma": "^0.9.3",
+    "font-awesome": "^4.7.0"
   }
 }
