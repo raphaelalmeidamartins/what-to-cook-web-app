@@ -71,14 +71,29 @@ i:hover {
   border-radius: 8px 8px 8px 8px;
 }
 
+#tags {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#tags span {
+  margin: 0.2rem;
+  font-size: 0.8rem;
+}
+
 #recipe-ingredients {
   list-style-position: inside;
   list-style-type: circle;
 }
 
 #recipe-ingredients h3, .instructions h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
+}
+
+#recipe-ingredients p {
+  margin-bottom: 1rem;
 }
 
 #recipe-ingredients li {
