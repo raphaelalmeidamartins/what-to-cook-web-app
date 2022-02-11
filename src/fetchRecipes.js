@@ -1,4 +1,22 @@
-//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}%20course&calories=${caloriesDropdown}&random=true`;
+//pegando informação do primeiro imput de pesquisa, 'o que vc quer comer?', considerando id = 'searchElement' com button 'addSearch', 
+// encodeURIComponent converte ',' e ' ' em valores usados em links: referencia: https://www.w3schools.com/tags/ref_urlencode.ASP
+const buttonSearch = document.getElementById('addSearch');
+const inputSearch = document.getElementById('searchElement');
+
+const addSearchLocal = () => {
+    const searchElement = encodeURIComponent(inputSearch.value);
+    localStorage.setItem('searchElement', searchElement);
+}
+//provavelmente colocar no window.onload, se iremos usar buttons: 
+buttonSearch.addEventListener('click', addSearchLocal)
+
+
+
+//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}%20course&calories=${caloriesDropdown}&random=true`; Função gerar URL :
+const urlGenerator = () => {
+    const getSearchElement = localStorage.getItem('searchElement')
+    const standartURL = `https://api.edamam.com/api/recipes/v2?type=public&q=${getSearchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`
+}
 
 
 //chave hits representa um array de objetos
