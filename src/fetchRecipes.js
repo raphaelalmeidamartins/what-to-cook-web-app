@@ -5,7 +5,6 @@ const inputSearch = document.getElementById('searchElement');
 
 const localStorageArray = [];
 
-
 const addSearchLocal = () => {
 	const searchElement = encodeURIComponent(inputSearch.value);
 	localStorage.setItem('searchElement', searchElement);
@@ -37,7 +36,8 @@ const radioValuesLocalStorage = (nameInput) => {
 //isso será colocado no script.js junto com as demais, na ordem apropriada
 localStorage.setItem('otherElements', JSON.stringify(localStorageArray));
 
-//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}&calories=${caloriesDropdown}&random=true`; Função gerar URL :
+//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}&calories=${caloriesDropdown}&random=true`; 
+//Função para gerar URL :
 const urlGenerator = () => {
 	const getSearchElement = localStorage.getItem('searchElement');
 	const storedArray = JSON.parse(localStorage.getItem('otherElements'));
@@ -60,6 +60,12 @@ const extractRecipe = (data) => {
 	const { recipe } = hits[0];
 	return recipe;  
 };
+
+//função para extrair as informações de recipe
+
+const data = await fetchRecipes();
+
+const { label, image, images, source, url, yield, dietLabels, healthLabels, cautions, ingredientLines, calories, totalWeight, totalTime, cuisineType, mealType, dishType, totalNutrients, totalDaily } = extractRecipe(data);
 
 
 //chave hits representa um array de objetos
