@@ -67,6 +67,30 @@ const data = await fetchRecipes();
 
 const { label, image, images, source, url, yield, dietLabels, healthLabels, cautions, ingredientLines, calories, totalWeight, totalTime, cuisineType, mealType, dishType, totalNutrients, totalDaily } = extractRecipe(data);
 
+const nutrientsObj = (ingredients) => {
+	const usedKeys = ['ENERC_KCAL', 'FAT', 'CHOCDF', 'PROCNT', 'CHOLE', 'NA'];
+	const objects = [];
+	Object.keys(ingredients).forEach((each) => {
+		if (usedKeys.includes(each)) {
+			objects.push(ingredients[each]);
+		}
+	})
+	return objects;
+}
+
+function appendImg(parent) {
+	const divImgContainer = document.createElement('div');
+  
+	const img = document.createElement('img');
+  
+	divImgContainer 
+	img.src = image;
+	
+	divImgContainer.appendChild(img);
+	parent.appendChild(divImgContainer);
+}
+
+
 
 //chave hits representa um array de objetos
 
