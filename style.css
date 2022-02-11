@@ -2,11 +2,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+/* font-family: 'Montserrat Alternates', sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Pacifico&display=swap');
+
 * {
   border: 0;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 :root {
@@ -52,22 +57,64 @@ i:hover {
 }
 
 #recipe-container {
-  background-color: white;
   padding: 0 0 1.5rem;
-  border-radius: 0 0 8px 8px;
+}
+
+#recipe-title {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--light-primaty-color);
+  background-color: var(--accent-color);
+  border-radius: 8px 8px 8px 8px;
 }
 
 #recipe-ingredients {
   list-style-position: inside;
-  list-style-type: disc;
+  list-style-type: circle;
+}
+
+#recipe-ingredients h3, .instructions h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 #recipe-ingredients li {
   padding: 0.5rem 0;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.instructions {
+  margin-top: 1rem;
+}
+
+.instructions span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.instructions span button {
+  width: 50%;
+  background-color: var(--accent-color) !important;
+  color: var(--light-primaty-color) !important;
+}
+
+.instructions span a {
+  color: var(--light-primaty-color);
+  text-decoration: underline;
 }
 
 .ingredients-container {
   padding: 1.2rem;
+  margin-top: 1.1rem;
+  background-color: var(--text-icons);
+  border-radius: 8px 8px 8px 8px;
+  color: var(--light-primaty-color);
 }
 
 .header-container {
@@ -88,7 +135,7 @@ header h1 {
 }
 
 .image img {
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .nav {
@@ -101,4 +148,5 @@ header h1 {
   padding: 1rem;
   background-color: var(--dark-primary-color);
   color: var(--text-icons);
+  border-radius: 25px 25px 0px 0px;
 }
