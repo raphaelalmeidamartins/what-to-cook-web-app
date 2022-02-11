@@ -1,0 +1,35 @@
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-primary-color: #FBC02D;
+  --light-primaty-color: #FFF9C4;
+  --primary-color: #FFEB3B;
+  --text-icons: #212121;
+  --accent-color: #FF5722;
+  --primary-text: #212121;
+  --secondary-text: #757575;
+  --divider-color: #BDBDBD;
+}
+
+body {
+  background-color: var(--light-primaty-color);
+  color: var(--text-icons);
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+}
+
+#main-container {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+}
+
+
