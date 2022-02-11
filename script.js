@@ -77,17 +77,17 @@ function removeEveryChild(object) {
 	}
 }
 
- async function generateRecipe  () {
+async function generateRecipe () {
 	const imgContainer = document.querySelector('.image');
 	appendImg(imgContainer);
 	const recipeTitle = document.getElementById('recipe-title'); 
 	recipeTitle.innerText = label;
 
-	document.getElementById('recipe-ingredients-number').innerText = ingredientLines.length;
+	document.getElementById('recipe-ingredients-number').innerText = ingredientLines.length - 1;
 	
 	const recipeIngredients = document.getElementById('recipe-ingredients'); 
 	//deleta todos menos o h3 no ul
-	while (recipeIngredients.firstElementChild.nextElementSibling) {
+	while (recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling) {
 		recipeIngredients.removeChild(recipeIngredients.lastChild);
 	}
 	ingredientLines.forEach((each) => {
