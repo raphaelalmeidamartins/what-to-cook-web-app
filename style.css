@@ -27,8 +27,18 @@ body {
 }
 
 main {
-  height: 100vh;
+  height: auto;
   width: 100vw;
+}
+
+i {
+  cursor: pointer;
+  font-size: 1.3rem;
+  opacity: 0.7;
+}
+
+i:hover {
+  opacity: 1;
 }
 
 .main-container {
@@ -38,7 +48,26 @@ main {
 .inside-container {
   width: 100%;
   height: 100%;
-  padding: 1.5rem;
+  padding: 4rem 1.5rem 4.8rem;
+}
+
+#recipe-container {
+  background-color: white;
+  padding: 0 0 1.5rem;
+  border-radius: 0 0 8px 8px;
+}
+
+#recipe-ingredients {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+#recipe-ingredients li {
+  padding: 0.5rem 0;
+}
+
+.ingredients-container {
+  padding: 1.2rem;
 }
 
 .header-container {
@@ -50,16 +79,16 @@ main {
   padding: 0.5rem 0.8rem;
   background-color: var(--light-primaty-color);
   color: var(--text-icons);
-}
-
-.header-container i {
-  font-size: 1.5rem;
-  cursor: pointer;
+  z-index: 1000;
 }
 
 header h1 {
   font-family: 'Pacifico', cursive;
   font-size: 2rem;
+}
+
+.image img {
+  border-radius: 8px 8px 0px 0px;
 }
 
 .nav {
@@ -72,6 +101,4 @@ header h1 {
   padding: 1rem;
   background-color: var(--dark-primary-color);
   color: var(--text-icons);
-  font-size: 1.3rem;
 }
-
