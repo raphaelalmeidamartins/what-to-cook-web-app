@@ -61,16 +61,41 @@ const nutrientsObj = (ingredients) => {
 
 function appendImg(parent) {
 	const divImgContainer = document.createElement('div');
-  
+	parent.firstChild.remove()
 	const img = document.createElement('img');
-  
-	divImgContainer 
+  	
 	img.src = image;
-	
+	img.id = 'recipe-img'
+
 	divImgContainer.appendChild(img);
 	parent.appendChild(divImgContainer);
 }
 
+function removeEveryChild(object) { 
+	while (object.firstChild) {
+		object.removeChild(object.lastChild);
+	}
+}
+
+ async function generateRecipe  () {
+	const imgContainer = document.querySelector('.image');
+	appendImg(imgContainer);
+	const recipeTitle = document.getElementById('recipe-title'); 
+	recipeTitle.innerText = label;
+
+	document.getElementById('recipe-ingredients-number').innerText = ingredientLines.length;
+	
+	const recipeIngredients = document.getElementById('recipe-ingredients'); 
+	//deleta todos menos o h3 no ul
+	while (recipeIngredients.firstElementChild.nextElementSibling) {
+		recipeIngredients.removeChild(recipeIngredients.lastChild);
+	}
+	ingredientLines.forEach((each) => {
+		const li = document.createElement('li');
+		li.innerText = each;
+		recipeIngredients.appendChild(li);
+	})
+}
 
 window.onload = async () => {
   buttonSearch.addEventListener('click', addSearchLocal);
