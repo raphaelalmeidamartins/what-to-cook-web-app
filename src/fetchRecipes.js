@@ -7,6 +7,7 @@ const addSearchLocal = () => {
 	const searchElement = encodeURIComponent(inputSearch.value);
 	localStorage.setItem('searchElement', searchElement);
 };
+
 //provavelmente colocar no window.onload, se iremos usar buttons: 
 buttonSearch.addEventListener('click', addSearchLocal);
 
@@ -34,6 +35,7 @@ const radioValuesLocalStorage = (nameInput) => {
 const urlGenerator = () => {
 	const getSearchElement = localStorage.getItem('searchElement');
 	let standardURL = `https://api.edamam.com/api/recipes/v2?type=public&q=${getSearchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`;
+
 	if (localStorage.getItem('diet') !== null) {
 		standardURL += localStorage.getItem('diet');
 	}
@@ -52,7 +54,7 @@ const urlGenerator = () => {
 	if (localStorage.getItem('calories') !== null) {
 		standardURL += localStorage.getItem('calories');
 	}
-	return standardURL;
+	return `${standardURL}&random=true`;
 };
 
 //função fetch para buscar as receitas na API
