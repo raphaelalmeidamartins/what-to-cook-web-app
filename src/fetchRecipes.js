@@ -10,12 +10,48 @@ const addSearchLocal = () => {
 //provavelmente colocar no window.onload, se iremos usar buttons: 
 buttonSearch.addEventListener('click', addSearchLocal)
 
+//multipleCheckboxes serve para valores marcados no dietType e healthInfo, já que ambos são vários checkboxes; 
+//valorClass deve ser a classe ex: .dietType e .healthInfo; dietOrHealth é diet ou health;
 
+const multipleCheckboxes = (valorClass, dietOrHealth) => {
+    let answer = '';
+    Array.from(document.querySelectorAll(valorClass)).forEach((each) => {
+        if (each.checked) {
+            answer = `&${dietOrHealth}=` + each.value;
+        }})
+    localStorage.setItem(dietOrHealth, answer);
+}
+//colocar função acima em eventos dos buttons, se for usar button
 
-//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}%20course&calories=${caloriesDropdown}&random=true`; Função gerar URL :
+//função com parametro para nameInput => cuisineType, mealType e dishType: 
+
+const radioValuesLocalStorage = (nameInput) => {
+    const inputValue = document.querySelector(`input[name=${nameInput}]:checked`).value;
+    localStorage.setItem(nameInput, `&${nameInput}=${inputValue}`);
+}
+
+//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}&calories=${caloriesDropdown}&random=true`; Função gerar URL :
 const urlGenerator = () => {
-    const getSearchElement = localStorage.getItem('searchElement')
-    const standartURL = `https://api.edamam.com/api/recipes/v2?type=public&q=${getSearchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`
+    const getSearchElement = localStorage.getItem('searchElement');
+    let standartURL = `https://api.edamam.com/api/recipes/v2?type=public&q=${getSearchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`
+    if (localStorage.getItem('diet') !== null) {
+        standartURL += localStorage.getItem('diet');
+    };
+    if (localStorage.getItem('health') !== null) {
+        standartURL += localStorage.getItem('health');
+    };
+    if (localStorage.getItem('cuisineType') !== null) {
+        standartURL += localStorage.getItem('cuisineType');
+    };
+    if (localStorage.getItem('mealType') !== null) {
+        standartURL += localStorage.getItem('mealType');
+    };
+    if (localStorage.getItem('dishType') !== null) {
+        standartURL += localStorage.getItem('dishType');
+    };
+    if (localStorage.getItem('calories') !== null) {
+        standartURL += localStorage.getItem('calories')
+    }
 }
 
 
