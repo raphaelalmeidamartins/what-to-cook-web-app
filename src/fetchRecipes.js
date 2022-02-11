@@ -3,6 +3,9 @@
 const buttonSearch = document.getElementById('addSearch');
 const inputSearch = document.getElementById('searchElement');
 
+const localStorageArray = [];
+
+
 const addSearchLocal = () => {
 	const searchElement = encodeURIComponent(inputSearch.value);
 	localStorage.setItem('searchElement', searchElement);
@@ -20,7 +23,7 @@ const multipleCheckboxes = (valorClass, dietOrHealth) => {
 		if (each.checked) {
 			answer = `&${dietOrHealth}=` + each.value;
 		}});
-	localStorage.setItem(dietOrHealth, answer);
+	localStorageArray.push(answer);
 };
 //colocar função acima em eventos dos buttons, se for usar button
 
@@ -28,33 +31,20 @@ const multipleCheckboxes = (valorClass, dietOrHealth) => {
 
 const radioValuesLocalStorage = (nameInput) => {
 	const inputValue = document.querySelector(`input[name=${nameInput}]:checked`).value;
-	localStorage.setItem(nameInput, `&${nameInput}=${inputValue}`);
+	localStorageArray.push(`&${nameInput}=${inputValue}`);
 };
+
+//isso será colocado no script.js junto com as demais, na ordem apropriada
+localStorage.setItem('otherElements', JSON.stringify(localStorageArray));
 
 //estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}&calories=${caloriesDropdown}&random=true`; Função gerar URL :
 const urlGenerator = () => {
 	const getSearchElement = localStorage.getItem('searchElement');
-	let standardURL = `https://api.edamam.com/api/recipes/v2?type=public&q=${getSearchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`;
+	const storedArray = JSON.parse(localStorage.getItem('otherElements'));
 
-	if (localStorage.getItem('diet') !== null) {
-		standardURL += localStorage.getItem('diet');
-	}
-	if (localStorage.getItem('health') !== null) {
-		standardURL += localStorage.getItem('health');
-	}
-	if (localStorage.getItem('cuisineType') !== null) {
-		standardURL += localStorage.getItem('cuisineType');
-	}
-	if (localStorage.getItem('mealType') !== null) {
-		standardURL += localStorage.getItem('mealType');
-	}
-	if (localStorage.getItem('dishType') !== null) {
-		standardURL += localStorage.getItem('dishType');
-	}
-	if (localStorage.getItem('calories') !== null) {
-		standardURL += localStorage.getItem('calories');
-	}
-	return `${standardURL}&random=true`;
+	const url = storedArray.reduce((acc, urlString) => acc + urlString, `https://api.edamam.com/api/recipes/v2?type=public&q=${getSearchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`);
+
+	return `${url}&random=true`;
 };
 
 //função fetch para buscar as receitas na API
