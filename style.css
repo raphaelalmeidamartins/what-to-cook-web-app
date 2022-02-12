@@ -174,6 +174,15 @@ header h1 {
   border-radius: 25px 25px 0px 0px;
 }
 
+#loading {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--light-primaty-color);
+}
+
 /*  class to change the display and width */
 
 .visible {
