@@ -38,10 +38,7 @@ const extractRecipe = (data) => {
 	return recipe;  
 };
 
-//linhas para extrair as informações de recipe, que serão colocadas dentro de cada listener dos botões de comida, bebida e busca
-const data = await fetchRecipes();
-
-// Acredito que essa função (antiga appendImg) possa ser reutilizada para outro caso, visto que o elemento da imagem já existe e, para adicionar a imagem, é só colocar o link em src 
+// Acredito que a função antiga (appendImg) possa ser reutilizada para outro caso, visto que o elemento da imagem já existe e, para adicionar a imagem, é só colocar o link em src - CRIAÇÃO DA SELECTORSORTER para auxiliar 
 function selectorSorter(category, tag) {
 	if (category === 'food') return document.querySelector(`#${tag}`);
 	if (category === 'drink') return document.querySelector(`#drink-${tag}`);
