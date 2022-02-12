@@ -86,9 +86,9 @@ const conversationFlow = () => {
 // https://web.dev/learn/css/transitions/
 
 window.onload = () => {
-	// startLoading();
-	// setTimeout(() => {
-	// 	stopLoading();
-	// }, 1000);
+	startLoading();
+	setTimeout(() => {
+		stopLoading();
+	}, 1000);
 	conversationFlow();
 };
