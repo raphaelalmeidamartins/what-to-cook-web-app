@@ -7,18 +7,21 @@ const tabFood = document.querySelector('#recipe-container');
 const tabDrink = document.querySelector('#drink-container');
 const tabSearch = document.querySelector('#search-container');
 
-const changeTo = (element) => {
-	const previous = document.querySelector('.visible');
-	if (previous) {
-	  previous.classList.remove('visible');
-	  previous.classList.add('invisible');
+const changeTo = (element, button) => {
+	const previousButton = document.querySelector('.selected');
+	if (previousButton) previousButton.classList.remove('selected');
+	button.classList.add('selected');
+	const previousElement = document.querySelector('.visible');
+	if (previousElement) {
+	  previousElement.classList.remove('visible');
+	  previousElement.classList.add('invisible');
 	}
 	element.classList.remove('invisible');
 	element.classList.add('visible');
 }
 
-foodIcon.addEventListener('click', () => changeTo(tabFood));
-searchIcon.addEventListener('click', () => changeTo(tabSearch));
-drinkIcon.addEventListener('click', () => changeTo(tabDrink));
+foodIcon.addEventListener('click', () => changeTo(tabFood, foodIcon));
+drinkIcon.addEventListener('click', () => changeTo(tabDrink, drinkIcon));
+searchIcon.addEventListener('click', () => changeTo(tabSearch, searchIcon));
 
 window.onload = () => {};

@@ -39,7 +39,7 @@ main {
 i {
   cursor: pointer;
   font-size: 1.3rem;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 i:hover {
@@ -53,11 +53,15 @@ i:hover {
 .inside-container {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
   padding: 4rem 1.5rem 4.8rem;
 }
 
-#recipe-container {
-  padding: 0 0 1.5rem;
+#recipe-container, #drink-container, #search-container {
+  overflow: hidden;
+  transition: width 500ms;
+  transition-property: all;
 }
 
 #recipe-title, #drink-recipe-title {
@@ -173,9 +177,15 @@ header h1 {
 /*  class to change the display and width */
 
 .visible {
-  display: block;
+  width: 100%;
 }
 
 .invisible {
-  display: none;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.selected i {
+  opacity: 1;
 }
