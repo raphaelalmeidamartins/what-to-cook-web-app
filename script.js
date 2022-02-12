@@ -21,5 +21,4 @@ foodIcon.addEventListener('click', () => changeTo(tabFood));
 searchIcon.addEventListener('click', () => changeTo(tabSearch));
 drinkIcon.addEventListener('click', () => changeTo(tabDrink));
 
-
 window.onload = () => {};
