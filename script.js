@@ -1,7 +1,7 @@
 const buttonSearch = document.getElementById('addSearch');
 const inputSearch = document.getElementById('searchElement');
 
-const localStorageArray = [];
+const userPreferences = [];
 
 const addSearchLocal = () => {
 	const searchElement = encodeURIComponent(inputSearch.value);
@@ -15,9 +15,9 @@ const multipleCheckboxes = (valorClass, dietOrHealth) => {
 	let answer = '';
 	Array.from(document.querySelectorAll(valorClass)).forEach((each) => {
 		if (each.checked) {
-			answer = `&${dietOrHealth}=` + each.value;
+			answer = `&${dietOrHealth}=${each.value}`;
 		}});
-	localStorageArray.push(answer);
+	userPreferences.push(answer);
 };
 //colocar função acima em eventos dos buttons, se for usar button
 
@@ -25,14 +25,11 @@ const multipleCheckboxes = (valorClass, dietOrHealth) => {
 
 const radioValuesLocalStorage = (nameInput) => {
 	const inputValue = document.querySelector(`input[name=${nameInput}]:checked`).value;
-	localStorageArray.push(`&${nameInput}=${inputValue}`);
+	userPreferences.push(`&${nameInput}=${inputValue}`);
 };
 
 //isso será colocado no script.js junto com as demais, na ordem apropriada
-localStorage.setItem('otherElements', JSON.stringify(localStorageArray));
-
-//estrutura da url global: const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchElement}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc&diet=${dietType}&health=${healthInfo}&health=${healthInfo}&cuisineType=${cuisineType}&mealType=${mealType}&dishType=${dishType}&calories=${caloriesDropdown}&random=true`; 
-//Função para gerar URL :
+localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
 
 //função para extrair a primeira receita do objeto de resposta
 const extractRecipe = (data) => {
@@ -41,23 +38,14 @@ const extractRecipe = (data) => {
 	return recipe;  
 };
 
-//função para extrair as informações de recipe
-
+//linhas para extrair as informações de recipe, que serão colocadas dentro de cada listener dos botões de comida, bebida e busca
 const data = await fetchRecipes();
 
-const { label, image, images, source, url, yield, dietLabels, healthLabels, cautions, ingredientLines, calories, totalWeight, totalTime, cuisineType, mealType, dishType, totalNutrients, totalDaily } = extractRecipe(data);
-
-
-function appendImg(parent) {
-	const divImgContainer = document.createElement('div');
-	parent.firstChild.remove()
-	const img = document.createElement('img');
-  	
-	img.src = image;
-	img.id = 'recipe-img'
-
-	divImgContainer.appendChild(img);
-	parent.appendChild(divImgContainer);
+// Acredito que essa função (antiga appendImg) possa ser reutilizada para outro caso, visto que o elemento da imagem já existe e, para adicionar a imagem, é só colocar o link em src 
+function selectorSorter(category, tag) {
+	if (category === 'food') return document.querySelector(`#${tag}`);
+	if (category === 'drink') return document.querySelector(`#drink-${tag}`);
+	if (category === 'search') return document.querySelector(`#search-${tag}`);
 }
 
 function removeEveryChild(object) { 
@@ -66,55 +54,57 @@ function removeEveryChild(object) {
 	}
 }
 
-function addAllTags() {
-	const tagParents = document.getElementById('tags')
-	removeEveryChild(tagParents);
+function addAllTags(dietLabels, healthLabels, cautions) {
+	const tagsParent = document.getElementById('tags')
+	removeEveryChild(tagsParent);
 
-	const allLabels = [];
-	allLabels.push(...dietLabels);
-	allLabels.push(...healthLabels);
-	allLabels.push(...cautions);
-	allLabels.forEach((each) => {
+	const allLabels = [...dietLabels, ...healthLabels, ...cautions];
+	allLabels.forEach((label) => {
 		const span = document.createElement('span');
-		span.innerText = each;
+		span.innerText = label;
 		span.className = 'tag'
-		tagParents.appendChild(span);
-	})
+		tagsParent.appendChild(span);
+	});
 }
 
-function tableValuesRefresh() {
-	document.getElementById('food-calories-data').innerText = Math.floor(totalNutrients.ENERC_KCAL.quantity / yield);
-	document.getElementById('food-carbs-data').innerText = Math.floor(totalNutrients.CHOCDF.quantity / yield);
-	document.getElementById('food-proteins-data').innerText = Math.floor(totalNutrients.PROCNT.quantity / yield);
-	document.getElementById('food-saturatedfat-data').innerText = Math.floor(totalNutrients.FASAT.quantity / yield);
-	document.getElementById('food-transfat-data').innerText = Math.floor(totalNutrients.FATRN.quantity / yield);
-	document.getElementById('food-totalfat-data').innerText = Math.floor(totalNutrients.FAT.quantity / yield);
-	document.getElementById('food-totalfiber-data').innerText = Math.floor(totalNutrients.FIBTG.quantity / yield);
-	document.getElementById('food-sodium-data').innerText = Math.floor(totalNutrients.NA.quantity / yield);
+//arg category poderá ser 'food', 'drink' ou 'search'
+function tableValuesRefresh(category, nutrients, daily, yield) {
+	const standardDataIds = ['-calories-data', '-carbs-data', '-proteins-data', '-saturatedfat-data', '-transfat-data', '-totalfat-data', '-totalfiber-data', '-sodium-data'];
+	const standardPercentIds = ['-calories-percent', '-carbs-percent', '-proteins-percent', '-saturatedfat-percent', '-transfat-percent', '-totalfat-percent', '-totalfiber-percent', '-sodium-percent'];
+	const standardKeys = ['ENERC_KCAL', 'CHOCDF', 'PROCNT', 'FASAT', 'FATRN', 'FAT', 'FIBTG', 'NA'];
 
-	
-	document.getElementById('food-calories-percent').innerText = Math.floor(totalDaily.ENERC_KCAL.quantity / yield);
-	document.getElementById('food-carbs-percent').innerText = Math.floor(totalDaily.CHOCDF.quantity / yield);
-	document.getElementById('food-proteins-percent').innerText = Math.floor(totalDaily.PROCNT.quantity / yield);
-	document.getElementById('food-saturatedfat-percent').innerText = Math.floor(totalDaily.FASAT.quantity / yield);
-	document.getElementById('food-transfat-percent').innerText = 0;
-	document.getElementById('food-totalfat-percent').innerText = Math.floor(totalDaily.FAT.quantity / yield);
-	document.getElementById('food-totalfiber-percent').innerText = Math.floor(totalDaily.FIBTG.quantity / yield);
-	document.getElementById('food-sodium-percent').innerText = Math.floor(totalDaily.NA.quantity / yield);
-} 
+	standardDataIds.forEach((id, index) => document.getElementById(`${category}${id}`).innerText = Math.floor(nutrients[standardKeys[index]].quantity / yield));
 
- async function generateRecipe  () {
-	addAllTags();
-	tableValuesRefresh();
-	
-	const imgContainer = document.querySelector('.image');
-	appendImg(imgContainer);
-	const recipeTitle = document.getElementById('recipe-title'); 
-	recipeTitle.innerText = label;
+	standardPercentIds.forEach((id, index) => document.getElementById(`${category}${id}`).innerText = Math.floor(daily[standardKeys[index]].quantity / yield));
+}
 
-	document.getElementById('recipe-ingredients-number').innerText = ingredientLines.length -1 ;
+// função que altera o innerText de elementos
+function innerTxtChanger(category, id, text) {
+	const changedElement = selectorSorter(category, id); 
+	changedElement.innerText = text;
+}
+
+//Alterações para que seja uma função mais genérica, para ser adicionada à função que será chamada no listener de cada uma das categorias
+function generateRecipe (data, category) {
+	const { label, image, images, source, url, yield, dietLabels, healthLabels, cautions, ingredientLines, totalTime, totalNutrients, totalDaily } = extractRecipe(data);
+
+	addAllTags(dietLabels, healthLabels, cautions);
+	tableValuesRefresh(category, totalNutrients, totalDaily, yield);
 	
-	document.getElementById('servings-number').innerText = yield;
+	const imgContainer = selectorSorter(category, 'recipe-img');
+	imgContainer.src = image;
+
+	innerTxtChanger(category, 'recipe-title', label);
+	innerTxtChanger(category, 'prepar-time', totalTime);
+	innerTxtChanger(category, 'recipe-ingredients-number', (ingredientLines.length - 1));
+	innerTxtChanger(category, 'servings-number', yield);
+	
+	const instructionsBtn = selectorSorter(category, 'recipe-btn-instructions');
+	instructionsBtn.onclick = window.location.href=url;
+	
+	const instructionsSource = instructionsBtn.nextElementSibling;
+	instructionsSource.href = url;
+	instructionsSource.innerText = `on ${source}`;
 
 	const recipeIngredients = document.getElementById('recipe-ingredients'); 
 	//deleta todos menos o h3 no ul
@@ -125,7 +115,18 @@ function tableValuesRefresh() {
 		const li = document.createElement('li');
 		li.innerText = each;
 		recipeIngredients.appendChild(li);
-	})
+	});
+}
+
+// função que será usada como listener para food, search e drink
+// sei que já existe uma listener para o efeito na branch de front-end (changeTab), então seria interessante colocar essa função aqui dentro
+async function categoryBtnClicker(category) {
+	const storedArray = JSON.parse(localStorage.getItem('userPreferences'));
+	const data;
+	if (category === 'food') data = await fetchFoodRecipes(storedArray);
+	if (category === 'drink') data = await fetchDrinkRecipes(storedArray);
+	if (category === 'search') data = await fetchSearchRecipes(storedArray);
+	generateRecipe(data, category);
 }
 
 window.onload = async () => {

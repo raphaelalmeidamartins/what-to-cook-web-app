@@ -1,5 +1,3 @@
-// const storedArray = JSON.parse(localStorage.getItem('otherElements'));
-
 const urlGenerator = (keyword, storedArray) => {	
 	const url = storedArray.reduce((acc, urlString) => acc + urlString, `https://api.edamam.com/api/recipes/v2?type=public&q=${keyword}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`);
 
@@ -29,7 +27,7 @@ const fetchFoodRecipes = async (storedArray) => {
 const fetchDrinkRecipes = async (storedArray) => {
 	const drinkKeywords = ['water', 'soda', 'vodka', 'gin', 'beer', 'wine', 'rum', 'juice'];
 	const drinkElement = drinkKeywords[Math.floor(Math.random()*drinkKeywords.length)];
-	const array = storedArray;
+	const array = [...storedArray];
 	array.push('&dishType=Drink');
 	const response = await fetch(urlGenerator(drinkElement, array));
 	const data = await response.json();
