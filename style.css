@@ -60,7 +60,7 @@ i:hover {
   padding: 0 0 1.5rem;
 }
 
-#recipe-title {
+#recipe-title, #drink-recipe-title {
   font-size: 1.5rem;
   margin: 1rem 0;
   padding: 1rem;
@@ -82,21 +82,21 @@ i:hover {
   font-size: 0.8rem;
 }
 
-#recipe-ingredients {
+.recipe-ingredients {
   list-style-position: inside;
   list-style-type: circle;
 }
 
-#recipe-ingredients h3, .instructions h3 {
+.recipe-ingredients h3, .instructions h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-#recipe-ingredients p {
+.recipe-ingredients p {
   margin-bottom: 1rem;
 }
 
-#recipe-ingredients li {
+.recipe-ingredients li {
   padding: 0.5rem 0;
   font-style: italic;
   font-weight: 300;
@@ -130,6 +130,10 @@ i:hover {
   background-color: var(--text-icons);
   border-radius: 8px 8px 8px 8px;
   color: var(--light-primaty-color);
+}
+
+.table {
+  margin-top: 1rem;
 }
 
 .header-container {

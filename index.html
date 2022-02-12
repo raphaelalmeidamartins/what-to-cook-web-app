@@ -35,50 +35,154 @@
                         <span class="tag">Shellfish-Free</span>
                     </section>
                     <section class="ingredients-container">
-                        <ul id="recipe-ingredients">
+                        <ul id="recipe-ingredients" class="recipe-ingredients">
                             <h3>Ingredients: <span id="recipe-ingredients-number">12</span></h3>
                             <p>Servings: <span id="servings-number">2</span></p>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
-                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
                         </ul>
                         <div class="instructions">
                             <h3>Preparation</h3>
-                            <span><button class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
+                            <span><button id="btn-food-instructions" class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
                         </div>
                     </section>
-                    <table>
-                        <tr>
+                    <table class="table is-hoverable">
+                        <thead>
                             <th>Quantity per serving</th>
+                            <th></th>
                             <th>%</th>
-                        </tr>
+                        </thead>
                         <tr>
                             <th>Energetic value</th>
-                            <td>113</td>
-                            <td>6%</td>
+                            <td><span id="food-calories-data">113</span>kcal</td>
+                            <td><span id="food-calories-percent">6</span>%</td>
                         </tr>
                         <tr>
                             <th>Carbs</th>
-                            <td>18g</td>
-                            <td>6%</td>
+                            <td><span id="food-carbs-data">18</span>g</td>
+                            <td><span id="food-carbs-percent">6</span>%</td>
                         </tr>
                         <tr>
-                            <th>Protein</th>
-                            <td>4g</td>
-                            <td>8%</td>
+                            <th>Proteins</th>
+                            <td><span id="food-proteins-data">4</span>g</td>
+                            <td><span id="food-proteins-percent">8</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Saturated fat</th>
+                            <td><span id="food-saturatedfat-data">1</span>g</td>
+                            <td><span id="food-saturatedfat-percent">3</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Trans fat</th>
+                            <td><span id="food-transfat-data">0</span>g</td>
+                            <td><span id="food-transfat-percent">0</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Total fat</th>
+                            <td><span id="food-totalfat-data">4</span>g</td>
+                            <td><span id="food-totalfat-percent">6</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Fiber</th>
+                            <td><span id="food-totalfiber-data">4</span>g</td>
+                            <td><span id="food-totalfiber-percent">17</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Sodium</th>
+                            <td><span id="food-sodium-data">380</span>mg</td>
+                            <td><span id="food-sodium-percent">16</span>%</td>
                         </tr>
                     </table>
                 </section>
                 <section id="drink-container">
+                    <figure class="image is-square">
+                        <img id="drink-recipe-img" src="https://www.edamam.com/web-img/360/3602f6b23a224e5e9f22d0797c39aeca.jpg">
+                    </figure>
+                    <h2 id="drink-recipe-title">Grapefruit Blossom Aperitif</h2>
+                    <section id="tags">
+                        <span class="tag">Low-Fat</span>
+                        <span class="tag">Low-Sodium</span>
+                        <span class="tag">Vegan</span>
+                        <span class="tag">Vegetarian</span>
+                        <span class="tag">Paleo</span>
+                        <span class="tag">Dairy-Free</span>
+                        <span class="tag">Gluten-Free</span>
+                        <span class="tag">Peanut-Free</span>
+                        <span class="tag">Tree-Nut-Free</span>
+                        <span class="tag">Soy-Free</span>
+                        <span class="tag">Fish-Free</span>
+                        <span class="tag">Shellfish-Free</span>
+                    </section>
+                    <section class="ingredients-container">
+                        <ul id="drink-recipe-ingredients" class="recipe-ingredients">
+                            <h3>Ingredients: <span id="drink-recipe-ingredients-number">3</span></h3>
+                            <p>Servings: <span id="drink-servings-number">1</span></p>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                            <li class="ingredient">Lorem ipsum dolor, sit amet consectetur adipisicing elit</li>
+                        </ul>
+                        <div class="instructions">
+                            <h3>Preparation</h3>
+                            <span><button id="btn-drink-instructions" class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
+                        </div>
+                    </section>
+                    <table class="table is-hoverable">
+                        <thead>
+                            <th>Quantity per serving</th>
+                            <th></th>
+                            <th>%</th>
+                        </thead>
+                        <tr>
+                            <th>Energetic value</th>
+                            <td><span id="drink-calories-data">113</span>kcal</td>
+                            <td>6%</td>
+                        </tr>
+                        <tr>
+                            <th>Carbs</th>
+                            <td><span id="drink-carbs-data">18</span>g</td>
+                            <td><span id="drink-carbs-percent">6</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Proteins</th>
+                            <td><span id="drink-proteins-data">4</span>g</td>
+                            <td><span id="drink-proteins-percent">8</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Saturated fat</th>
+                            <td><span id="drink-saturatedfat-data">1</span>g</td>
+                            <td><span id="drink-saturatedfat-percent">3</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Trans fat</th>
+                            <td><span id="drink-transfat-data">0</span>g</td>
+                            <td><span id="drink-transfat-percent">0</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Total fat</th>
+                            <td><span id="drink-totalfat-data">4</span>g</td>
+                            <td><span id="drink-totalfat-percent">6</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Fiber</th>
+                            <td><span id="drink-totalfiber-data">4</span>g</td>
+                            <td><span id="drink-totalfiber-percent">17</span>%</td>
+                        </tr>
+                        <tr>
+                            <th>Sodium</th>
+                            <td><span id="drink-sodium-data">380</span>mg</td>
+                            <td><span id="drink-sodium-percent">16</span>%</td>
+                        </tr>
+                    </table>
                 </section>
                 <section id="search-container">
                 </section>
