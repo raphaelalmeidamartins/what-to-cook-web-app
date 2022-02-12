@@ -68,12 +68,16 @@ const conversationFlow = () => {
 	let stop = true;
 	while (stop) {
 		hiddenElementsArray.forEach((currentElement, index) => {
-			if (currentElement.tagName === 'DIV') {
-				stop = false;
-				displayElement(currentElement, 1000 * [index + 1]);
-				throw console.log('Parou');
+			let timer = 0.5 * index + 1 
+			if (currentElement.tagName === 'P') {
+				displayElement(currentElement);
+				currentElement.style.transitionDelay = `${timer}s`
+				console.log(currentElement);
 			} else {
-				displayElement(currentElement, 1000 * [index + 1]);
+				stop = false;
+				displayElement(currentElement);
+				currentElement.style.transitionDelay = `${timer}s`
+				throw console.log('Parou');
 			}
 		});
 	}
