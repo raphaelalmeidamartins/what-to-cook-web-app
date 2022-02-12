@@ -36,13 +36,13 @@ main {
   width: 100vw;
 }
 
-i {
+i:not(.typing-icon) {
   cursor: pointer;
   font-size: 1.3rem;
   opacity: 0.4;
 }
 
-i:hover {
+i:not(.typing-icon):hover {
   opacity: 1;
 }
 
@@ -197,4 +197,68 @@ header h1 {
 
 .selected i {
   opacity: 1;
+}
+
+/* forms styles */
+
+#preferences-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+}
+
+/* Me inspirei nestes dois tutoriais para fazer as speech bubbles 
+https://codingislove.com/css-speech-bubbles/ 
+https://www.youtube.com/watch?v=Pi-dTBAi0t0
+*/
+
+.speech-bubble {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--secondary-text);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  box-shadow: 0px 3px 0px var(--secondary-text);
+}
+
+.speech-bubble::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid var(--secondary-text);
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--secondary-text);
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  top: 6px;
+}
+
+.speech-bubble::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 9px solid var(--light-primaty-color);
+  border-right: 9px solid transparent;
+  border-top: 9px solid var(--light-primaty-color);
+  border-bottom: 9px solid transparent;
+  right: -18px;
+  top: 7px;
+}
+
+.typing {
+  padding: 0.4rem 1rem;
+}
+
+.input-group {
+  padding: 1.5rem 0;
+}
+
+.input-group div {
+  padding: 0.5rem 0;
+}
+
+.checkbox, .input-group button {
+  margin-right: 0.4rem;
 }
