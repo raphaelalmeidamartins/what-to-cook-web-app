@@ -48,17 +48,6 @@ const data = await fetchRecipes();
 const { label, image, images, source, url, yield, dietLabels, healthLabels, cautions, ingredientLines, calories, totalWeight, totalTime, cuisineType, mealType, dishType, totalNutrients, totalDaily } = extractRecipe(data);
 
 
-const nutrientsObj = (ingredients) => {
-	const usedKeys = ['ENERC_KCAL', 'FAT', 'CHOCDF', 'PROCNT', 'CHOLE', 'NA'];
-	const objects = [];
-	Object.keys(ingredients).forEach((each) => {
-		if (usedKeys.includes(each)) {
-			objects.push(ingredients[each]);
-		}
-	})
-	return objects;
-}
-
 function appendImg(parent) {
 	const divImgContainer = document.createElement('div');
 	parent.firstChild.remove()
@@ -77,14 +66,56 @@ function removeEveryChild(object) {
 	}
 }
 
-async function generateRecipe () {
+function addAllTags() {
+	const tagParents = document.getElementById('tags')
+	removeEveryChild(tagParents);
+
+	const allLabels = [];
+	allLabels.push(...dietLabels);
+	allLabels.push(...healthLabels);
+	allLabels.push(...cautions);
+	allLabels.forEach((each) => {
+		const span = document.createElement('span');
+		span.innerText = each;
+		span.className = 'tag'
+		tagParents.appendChild(span);
+	})
+}
+
+function tableValuesRefresh() {
+	document.getElementById('food-calories-data').innerText = Math.floor(totalNutrients.ENERC_KCAL.quantity / yield);
+	document.getElementById('food-carbs-data').innerText = Math.floor(totalNutrients.CHOCDF.quantity / yield);
+	document.getElementById('food-proteins-data').innerText = Math.floor(totalNutrients.PROCNT.quantity / yield);
+	document.getElementById('food-saturatedfat-data').innerText = Math.floor(totalNutrients.FASAT.quantity / yield);
+	document.getElementById('food-transfat-data').innerText = Math.floor(totalNutrients.FATRN.quantity / yield);
+	document.getElementById('food-totalfat-data').innerText = Math.floor(totalNutrients.FAT.quantity / yield);
+	document.getElementById('food-totalfiber-data').innerText = Math.floor(totalNutrients.FIBTG.quantity / yield);
+	document.getElementById('food-sodium-data').innerText = Math.floor(totalNutrients.NA.quantity / yield);
+
+	
+	document.getElementById('food-calories-percent').innerText = Math.floor(totalDaily.ENERC_KCAL.quantity / yield);
+	document.getElementById('food-carbs-percent').innerText = Math.floor(totalDaily.CHOCDF.quantity / yield);
+	document.getElementById('food-proteins-percent').innerText = Math.floor(totalDaily.PROCNT.quantity / yield);
+	document.getElementById('food-saturatedfat-percent').innerText = Math.floor(totalDaily.FASAT.quantity / yield);
+	document.getElementById('food-transfat-percent').innerText = 0;
+	document.getElementById('food-totalfat-percent').innerText = Math.floor(totalDaily.FAT.quantity / yield);
+	document.getElementById('food-totalfiber-percent').innerText = Math.floor(totalDaily.FIBTG.quantity / yield);
+	document.getElementById('food-sodium-percent').innerText = Math.floor(totalDaily.NA.quantity / yield);
+} 
+
+ async function generateRecipe  () {
+	addAllTags();
+	tableValuesRefresh();
+	
 	const imgContainer = document.querySelector('.image');
 	appendImg(imgContainer);
 	const recipeTitle = document.getElementById('recipe-title'); 
 	recipeTitle.innerText = label;
 
-	document.getElementById('recipe-ingredients-number').innerText = ingredientLines.length - 1;
+	document.getElementById('recipe-ingredients-number').innerText = ingredientLines.length -1 ;
 	
+	document.getElementById('servings-number').innerText = yield;
+
 	const recipeIngredients = document.getElementById('recipe-ingredients'); 
 	//deleta todos menos o h3 no ul
 	while (recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling) {
