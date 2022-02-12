@@ -99,6 +99,7 @@ function generateRecipe (data, category) {
 	innerTxtChanger(category, 'recipe-ingredients-number', (ingredientLines.length - 1));
 	innerTxtChanger(category, 'servings-number', yield);
 	
+	// Requer revisão, pois não sei se a linha 104 funciona
 	const instructionsBtn = selectorSorter(category, 'recipe-btn-instructions');
 	instructionsBtn.onclick = window.location.href=url;
 	
