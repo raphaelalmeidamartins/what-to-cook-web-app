@@ -60,7 +60,7 @@ i:hover {
   padding: 0 0 1.5rem;
 }
 
-#recipe-title {
+#recipe-title, #drink-recipe-title {
   font-size: 1.5rem;
   margin: 1rem 0;
   padding: 1rem;
@@ -82,21 +82,21 @@ i:hover {
   font-size: 0.8rem;
 }
 
-#recipe-ingredients {
+.recipe-ingredients {
   list-style-position: inside;
   list-style-type: circle;
 }
 
-#recipe-ingredients h3, .instructions h3 {
+.recipe-ingredients h3, .instructions h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-#recipe-ingredients p {
+.recipe-ingredients p {
   margin-bottom: 1rem;
 }
 
-#recipe-ingredients li {
+.recipe-ingredients li {
   padding: 0.5rem 0;
   font-style: italic;
   font-weight: 300;
@@ -132,6 +132,10 @@ i:hover {
   color: var(--light-primaty-color);
 }
 
+.table {
+  margin-top: 1rem;
+}
+
 .header-container {
   display: flex;
   position: fixed;
@@ -164,18 +168,6 @@ header h1 {
   background-color: var(--dark-primary-color);
   color: var(--text-icons);
   border-radius: 25px 25px 0px 0px;
-}
-
-#drink-container {
-  background-color: #FF5722;
-  width: 100%;
-  height: 100%;
-}
-
-#search-container {
-  background-color: var(--primary-color);
-  width: 100%;
-  height: 100%;
 }
 
 /*  class to change the display and width */
