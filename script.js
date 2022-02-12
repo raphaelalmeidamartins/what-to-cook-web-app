@@ -12,7 +12,7 @@ const tabFood = document.querySelector('#recipe-container');
 const tabDrink = document.querySelector('#drink-container');
 const tabSearch = document.querySelector('#search-container');
 
-const changeTo = (element, button) => {
+const changeTab = (element, button) => {
 	const previousButton = document.querySelector('.selected');
 	if (previousButton) previousButton.classList.remove('selected');
 	button.classList.add('selected');
@@ -39,9 +39,9 @@ const stopLoading = () => {
 	loadingScreen.style.display = 'none';
 };
 
-foodIcon.addEventListener('click', () => changeTo(tabFood, foodIcon));
-drinkIcon.addEventListener('click', () => changeTo(tabDrink, drinkIcon));
-searchIcon.addEventListener('click', () => changeTo(tabSearch, searchIcon));
+foodIcon.addEventListener('click', () => changeTab(tabFood, foodIcon));
+drinkIcon.addEventListener('click', () => changeTab(tabDrink, drinkIcon));
+searchIcon.addEventListener('click', () => changeTab(tabSearch, searchIcon));
 
 window.onload = () => {
 	startLoading();
