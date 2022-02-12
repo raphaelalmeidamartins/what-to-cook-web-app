@@ -39,7 +39,7 @@ main {
 i {
   cursor: pointer;
   font-size: 1.3rem;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 i:hover {
