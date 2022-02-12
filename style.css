@@ -34,6 +34,7 @@ body {
 main {
   height: auto;
   width: 100vw;
+  display: none;
 }
 
 i:not(.typing-icon) {
@@ -205,6 +206,7 @@ header h1 {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
+  overflow-x: hidden;
 }
 
 /* Me inspirei nestes dois tutoriais para fazer as speech bubbles 
@@ -217,8 +219,26 @@ https://www.youtube.com/watch?v=Pi-dTBAi0t0
   padding: 1rem;
   border: 1px solid var(--secondary-text);
   border-radius: 8px;
+  margin-right: 20px;
   margin-bottom: 0.8rem;
   box-shadow: 0px 3px 0px var(--secondary-text);
+}
+
+.speech-bubble, .input-group {
+  transform-origin: 0 0;
+  transition-property: transform, opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+}
+
+.hidden {
+  transform: translateX(+100%);
+  opacity: 0;
+}
+
+.display {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .speech-bubble::before {
