@@ -21,6 +21,9 @@ const tabSearch = document.querySelector('#search-container');
 // form selectors
 
 const form = document.querySelector('#preferences-form');
+const nextButtons = document.querySelectorAll('.is-success');
+
+// functions
 
 const changeTab = (element, button) => {
 	const previousButton = document.querySelector('.selected');
@@ -63,12 +66,13 @@ const hiddenElement = (element, timer) => {
 	setTimeout(() => 	element.classList.add('hidden'), timer);
 };
 
-const conversationFlow = () => {
+const conversationFlow = (event) => {
+	if (event) event.preventDefault();
 	const hiddenElementsArray = document.querySelectorAll('.hidden');
 	let stop = true;
 	while (stop) {
 		hiddenElementsArray.forEach((currentElement, index) => {
-			let timer = 0.5 * index + 1 
+			let timer = 2 * index + 1;
 			if (currentElement.tagName === 'P') {
 				displayElement(currentElement);
 				currentElement.style.transitionDelay = `${timer}s`
@@ -82,6 +86,10 @@ const conversationFlow = () => {
 		});
 	}
 };
+
+nextButtons.forEach((element) => {
+	element.addEventListener('click', conversationFlow);
+});
 
 // https://web.dev/learn/css/transitions/
 
