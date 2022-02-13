@@ -62,6 +62,8 @@ i:not(.typing-icon):hover {
 .forms-inside-container {
   flex-flow: column nowrap;
   justify-content: flex-end;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 #settings-modal {
@@ -377,11 +379,6 @@ div.questions {
 
   .inside-container {
     max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .forms-inside-container {
-    max-width: 800px;
     margin: 0 auto;
   }
 }
