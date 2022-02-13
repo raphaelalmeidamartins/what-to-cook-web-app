@@ -21,7 +21,8 @@ const tabSearch = document.querySelector('#search-container');
 // form selectors
 
 const form = document.querySelector('#preferences-form');
-const nextButtons = document.querySelectorAll('.is-success');
+const questionsArray = [...form.children];
+const nextButtons = document.querySelectorAll('.next');
 
 // functions
 
@@ -56,39 +57,34 @@ foodIcon.addEventListener('click', () => changeTab(tabFood, foodIcon));
 drinkIcon.addEventListener('click', () => changeTab(tabDrink, drinkIcon));
 searchIcon.addEventListener('click', () => changeTab(tabSearch, searchIcon));
 
-const displayElement = (element, timer) => {
+const displayElement = (element) => {
 	element.classList.remove('hidden');
-	setTimeout(() => 	element.classList.add('display'), timer);
+	element.classList.add('display');
 };
 
-const hiddenElement = (element, timer) => {
+const hideElement = (element) => {
 	element.classList.remove('display');
-	setTimeout(() => 	element.classList.add('hidden'), timer);
+	element.classList.add('hidden');
 };
 
-const conversationFlow = (event) => {
-	if (event) event.preventDefault();
-	const hiddenElementsArray = document.querySelectorAll('.hidden');
-	let stop = true;
-	while (stop) {
-		hiddenElementsArray.forEach((currentElement, index) => {
-			let timer = 2 * index + 1;
-			if (currentElement.tagName === 'P') {
-				displayElement(currentElement);
-				currentElement.style.transitionDelay = `${timer}s`
-				console.log(currentElement);
-			} else {
-				stop = false;
-				displayElement(currentElement);
-				currentElement.style.transitionDelay = `${timer}s`
-				throw console.log('Parou');
-			}
-		});
-	}
-};
+const conversationFlow = (question) => {
+	question.style.height = 'fit-content';
+	[...question.children].forEach((currentBubble, index) => {
+		let delay = 1 * (index +1);
+		currentBubble.style.transitionDelay = `${delay}s`;
+		currentBubble.style.display = 'block';
+		displayElement(currentBubble);
+		window.scrollTo(0, document.body.scrollHeight);
+	});
+}
 
-nextButtons.forEach((element) => {
-	element.addEventListener('click', conversationFlow);
+nextButtons.forEach((currentButton, index) => {
+	currentButton.addEventListener('click', (event) => {
+		event.preventDefault();
+		const currentInputGroup = currentButton.parentElement.parentElement;
+		[...currentInputGroup.children].forEach((input) => input.remove());
+		conversationFlow(currentInputGroup.parentElement.nextElementSibling);
+	});
 });
 
 // https://web.dev/learn/css/transitions/
@@ -98,5 +94,5 @@ window.onload = () => {
 	setTimeout(() => {
 		stopLoading();
 	}, 1000);
-	conversationFlow();
+	if(localStorage.length === 0) conversationFlow(document.getElementById('question-1'));
 };

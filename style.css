@@ -51,12 +51,18 @@ i:not(.typing-icon):hover {
   position: relative;
 }
 
-.inside-container {
+.inside-container, .forms-inside-container {
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   padding: 4rem 1.5rem 4.8rem;
+}
+
+.forms-inside-container {
+  flex-flow: column nowrap;
+  justify-content: flex-end;
 }
 
 #recipe-container, #drink-container, #search-container {
@@ -214,10 +220,20 @@ https://codingislove.com/css-speech-bubbles/
 https://www.youtube.com/watch?v=Pi-dTBAi0t0
 */
 
+div.questions {
+  height: 0;
+  overflow: hidden;
+  transition: height 400ms;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+}
+
 .speech-bubble {
   position: relative;
   padding: 1rem;
   border: 1px solid var(--secondary-text);
+  background-color: var(--accent-color);
   border-radius: 8px;
   margin-right: 20px;
   margin-bottom: 0.8rem;
@@ -226,7 +242,7 @@ https://www.youtube.com/watch?v=Pi-dTBAi0t0
 
 .speech-bubble, .input-group {
   transform-origin: 0 0;
-  transition-property: transform, opacity;
+  transition-property: transform, opacity, height;
   transition-duration: 1s;
   transition-timing-function: ease;
 }
@@ -259,9 +275,9 @@ https://www.youtube.com/watch?v=Pi-dTBAi0t0
   width: 0px;
   height: 0px;
   position: absolute;
-  border-left: 9px solid var(--light-primaty-color);
+  border-left: 9px solid var(--accent-color);
   border-right: 9px solid transparent;
-  border-top: 9px solid var(--light-primaty-color);
+  border-top: 9px solid var(--accent-color);
   border-bottom: 9px solid transparent;
   right: -18px;
   top: 7px;
@@ -273,6 +289,7 @@ https://www.youtube.com/watch?v=Pi-dTBAi0t0
 
 .input-group {
   padding: 1.5rem 0;
+  overflow: hidden;
 }
 
 .input-group div {
