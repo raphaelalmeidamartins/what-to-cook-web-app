@@ -1,8 +1,9 @@
 // icons selectors
 
-const foodIcon = document.querySelector('#food');
-const drinkIcon = document.querySelector('#drink');
-const refreshIcon = document.querySelector('#refresh');
+const foodIcon = document.querySelector('#food-icon');
+const drinkIcon = document.querySelector('#drink-icon');
+const refreshIcon = document.querySelector('#refresh-icon');
+const settingsIcon = document.querySelector('#setttings-icon');
 
 // loading screen selector
 
@@ -15,6 +16,12 @@ const navbar = document.querySelector('#navbar');
 const allTabs = document.querySelector('#main-container');
 const tabFood = document.querySelector('#recipe-container');
 const tabDrink = document.querySelector('#drink-container');
+
+// modal selectors
+
+const modal = document.querySelector('.modal');
+const modalCloseButton = document.querySelector('.modal-close');
+const resetSettingsButton = document.querySelector('#btn-reset-settings');
 
 // form selectors
 
@@ -38,16 +45,23 @@ const changeTab = (element, button) => {
 	element.classList.add('visible');
 };
 
-const startLoading = () => {
-	loadingScreen.style.display = 'flex';
-};
-
-const stopLoading = () => {
-	loadingScreen.style.display = 'none';
+const displayModal = (element, button) => {
+	const previousButton = document.querySelector('.selected');
+	if (previousButton) previousButton.classList.remove('selected');
+	button.classList.add('selected');
+	element.classList.add('is-active');
 };
 
 foodIcon.addEventListener('click', () => changeTab(tabFood, foodIcon));
 drinkIcon.addEventListener('click', () => changeTab(tabDrink, drinkIcon));
+settingsIcon.addEventListener('click', () => displayModal(modal, settingsIcon));
+refreshIcon.addEventListener('click', () => window.location.reload());
+
+modalCloseButton.addEventListener('click', () => modal.classList.remove('is-active'));
+resetSettingsButton.addEventListener('click', () => {
+	localStorage.clear();
+	window.location.reload();
+});
 
 const displayElement = (element) => {
 	element.classList.remove('hidden');
@@ -88,6 +102,14 @@ nextButtons.forEach((currentButton) => {
 		currentInputGroup.remove();
 	});
 });
+
+const startLoading = () => {
+	loadingScreen.style.display = 'flex';
+};
+
+const stopLoading = () => {
+	loadingScreen.style.display = 'none';
+};
 
 window.onload = () => {
 	startLoading();
