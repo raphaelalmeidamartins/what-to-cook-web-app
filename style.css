@@ -66,8 +66,6 @@ i:not(.typing-icon):hover {
 
 #recipe-container, #drink-container, #search-container {
   overflow: hidden;
-  transition: width 500ms;
-  transition-property: all;
 }
 
 #recipe-title, #drink-recipe-title {
@@ -196,13 +194,11 @@ header h1 {
 /*  class to change the display and width */
 
 .visible {
-  width: 100%;
+  display: block;
 }
 
 .invisible {
-  width: 0;
-  height: 0;
-  overflow: hidden;
+  display: none;
 }
 
 .selected i {
