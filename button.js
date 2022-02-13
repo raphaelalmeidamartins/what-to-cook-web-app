@@ -82,8 +82,8 @@ nextButtons.forEach((currentButton, index) => {
 	currentButton.addEventListener('click', (event) => {
 		event.preventDefault();
 		const currentInputGroup = currentButton.parentElement.parentElement;
-		[...currentInputGroup.children].forEach((input) => input.remove());
 		conversationFlow(currentInputGroup.parentElement.nextElementSibling);
+		currentInputGroup.remove();
 	});
 });
 

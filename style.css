@@ -34,7 +34,6 @@ body {
 main {
   height: auto;
   width: 100vw;
-  display: none;
 }
 
 i:not(.typing-icon) {
@@ -63,6 +62,10 @@ i:not(.typing-icon):hover {
 .forms-inside-container {
   flex-flow: column nowrap;
   justify-content: flex-end;
+}
+
+#forms {
+  display: none;
 }
 
 #recipe-container, #drink-container, #search-container {
@@ -236,7 +239,7 @@ div.questions {
   background-color: var(--accent-color);
   border-radius: 8px;
   margin-right: 20px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
   box-shadow: 0px 3px 0px var(--secondary-text);
 }
 
@@ -245,6 +248,7 @@ div.questions {
   transition-property: transform, opacity, height;
   transition-duration: 1s;
   transition-timing-function: ease;
+  border-radius: 8px;
 }
 
 .hidden {
@@ -288,14 +292,15 @@ div.questions {
 }
 
 .input-group {
-  padding: 1.5rem 0;
+  padding: 1rem;
   overflow: hidden;
+  border: 1px solid var(--secondary-text);
 }
 
-.input-group div {
-  padding: 0.5rem 0;
+.input-group div:not(.submit-container) {
+  margin-top: 1rem;
 }
 
 .checkbox, .input-group button {
-  margin-right: 0.4rem;
+  margin-right: 1rem;
 }
