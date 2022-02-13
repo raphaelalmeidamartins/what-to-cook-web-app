@@ -1,6 +1,5 @@
 // icons selectors
 
-const searchIcon = document.querySelector('#search');
 const foodIcon = document.querySelector('#food');
 const drinkIcon = document.querySelector('#drink');
 const refreshIcon = document.querySelector('#refresh');
@@ -16,7 +15,6 @@ const navbar = document.querySelector('#navbar');
 const allTabs = document.querySelector('#main-container');
 const tabFood = document.querySelector('#recipe-container');
 const tabDrink = document.querySelector('#drink-container');
-const tabSearch = document.querySelector('#search-container');
 
 // form selectors
 
@@ -50,7 +48,6 @@ const stopLoading = () => {
 
 foodIcon.addEventListener('click', () => changeTab(tabFood, foodIcon));
 drinkIcon.addEventListener('click', () => changeTab(tabDrink, drinkIcon));
-searchIcon.addEventListener('click', () => changeTab(tabSearch, searchIcon));
 
 const displayElement = (element) => {
 	element.classList.remove('hidden');
