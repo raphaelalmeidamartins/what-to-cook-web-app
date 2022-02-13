@@ -11,7 +11,6 @@ const loadingScreen = document.querySelector('#loading');
 
 // tabs selectors
 
-const header = document.querySelector('#header');
 const navbar = document.querySelector('#navbar');
 const allTabs = document.querySelector('#main-container');
 const tabFood = document.querySelector('#recipe-container');
@@ -38,8 +37,8 @@ const changeTab = (element, button) => {
 	button.classList.add('selected');
 	const previousElement = document.querySelector('.visible');
 	if (previousElement) {
-	  previousElement.classList.remove('visible');
-	  previousElement.classList.add('invisible');
+		previousElement.classList.remove('visible');
+		previousElement.classList.add('invisible');
 	}
 	element.classList.remove('invisible');
 	element.classList.add('visible');
@@ -68,11 +67,6 @@ const displayElement = (element) => {
 	element.classList.add('display');
 };
 
-const hideElement = (element) => {
-	element.classList.remove('display');
-	element.classList.add('hidden');
-};
-
 const conversationFlow = (question) => {
 	question.style.height = 'fit-content';
 	[...question.children].forEach((currentBubble, index) => {
@@ -92,7 +86,7 @@ const conversationFlow = (question) => {
 		localStorage.setItem('preferences', 'placeholder');
 		// localStorage.setItem('preferences', JSON.stringify(preferencesObj)); Exemplo de como pode substituir o placeholder;
 	}
-}
+};
 
 nextButtons.forEach((currentButton) => {
 	currentButton.addEventListener('click', (event) => {
