@@ -20,9 +20,10 @@ const tabSearch = document.querySelector('#search-container');
 
 // form selectors
 
+const formContainer = document.querySelector('#forms');
 const form = document.querySelector('#preferences-form');
 const questionsArray = [...form.children];
-const nextButtons = document.querySelectorAll('.next');
+const nextButtons = document.querySelectorAll('.is-success');
 
 // functions
 
@@ -40,16 +41,10 @@ const changeTab = (element, button) => {
 };
 
 const startLoading = () => {
-	header.style.display = 'none';
-	navbar.style.display = 'none';
-	allTabs.style.display = 'none';
 	loadingScreen.style.display = 'flex';
 };
 
 const stopLoading = () => {
-	header.style.display = 'flex';
-	navbar.style.display = 'flex';
-	allTabs.style.display = 'block';
 	loadingScreen.style.display = 'none';
 };
 
@@ -74,11 +69,21 @@ const conversationFlow = (question) => {
 		currentBubble.style.transitionDelay = `${delay}s`;
 		currentBubble.style.display = 'block';
 		displayElement(currentBubble);
-		window.scrollTo(0, document.body.scrollHeight);
+		window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 	});
+	if (question.id === 'question-5') {
+		setTimeout(() => {
+			formContainer.style.display = 'none';
+			navbar.style.display = 'flex';
+			allTabs.style.display = 'flex';
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		}, 4000);
+		localStorage.setItem('preferences', 'placeholder');
+		// localStorage.setItem('preferences', JSON.stringify(preferencesObj)); Exemplo de como pode substituir o placeholder;
+	}
 }
 
-nextButtons.forEach((currentButton, index) => {
+nextButtons.forEach((currentButton) => {
 	currentButton.addEventListener('click', (event) => {
 		event.preventDefault();
 		const currentInputGroup = currentButton.parentElement.parentElement;
@@ -87,12 +92,16 @@ nextButtons.forEach((currentButton, index) => {
 	});
 });
 
-// https://web.dev/learn/css/transitions/
-
 window.onload = () => {
 	startLoading();
 	setTimeout(() => {
 		stopLoading();
-	}, 1000);
-	if(localStorage.length === 0) conversationFlow(document.getElementById('question-1'));
+	}, 1500);
+	if (localStorage.length === 0) {
+		navbar.style.display = 'none';
+		allTabs.style.display = 'none';
+		conversationFlow(questionsArray[0]);
+	} else {
+		formContainer.style.display = 'none';
+	}
 };

@@ -64,10 +64,6 @@ i:not(.typing-icon):hover {
   justify-content: flex-end;
 }
 
-#forms {
-  display: none;
-}
-
 #recipe-container, #drink-container, #search-container {
   overflow: hidden;
   transition: width 500ms;
@@ -185,6 +181,10 @@ header h1 {
 }
 
 #loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3000;
   width: 100vw;
   height: 100vh;
   display: none;
