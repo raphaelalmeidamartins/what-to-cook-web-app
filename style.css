@@ -1,21 +1,21 @@
 /* font-family: 'Pacifico', cursive; */
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("/home/raphael/Documentos/GitHub/Projetos finalizados/to-do-list/.stylelintrc.json");
 
 /* font-family: 'Montserrat Alternates', sans-serif; */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Pacifico&display=swap");
 
 :root {
-  --dark-primary-color: #FBC02D;
-  --light-primaty-color: #FFF9C4;
+  --dark-primary-color: #fbc02d;
+  --light-primaty-color: #fff9c4;
   --shadow-light-primary-color: #b8b281;
-  --primary-color: #FFEB3B;
+  --primary-color: #ffeb3b;
   --text-icons: #212121;
-  --accent-color: #FF5722;
+  --accent-color: #ff5722;
   --primary-text: #212121;
   --secondary-text: #757575;
-  --divider-color: #BDBDBD;
+  --divider-color: #bdbdbd;
 }
 
 * {
@@ -23,7 +23,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 
 body {
@@ -34,6 +34,10 @@ body {
 main {
   height: auto;
   width: 100vw;
+}
+
+.selected i {
+  opacity: 1;
 }
 
 i:not(.typing-icon) {
@@ -50,7 +54,8 @@ i:not(.typing-icon):hover {
   position: relative;
 }
 
-.inside-container, .forms-inside-container {
+.inside-container,
+.forms-inside-container {
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -81,16 +86,19 @@ i:not(.typing-icon):hover {
   margin-top: 1rem;
 }
 
-#recipe-container, #drink-container {
+#recipe-container,
+#drink-container {
   overflow: hidden;
 }
 
-.image-panel, .ingredients-table-panel {
+.image-panel,
+.ingredients-table-panel {
   display: flex;
   flex-flow: column nowrap;
 }
 
-#recipe-title, #drink-recipe-title {
+#recipe-title,
+#drink-recipe-title {
   font-size: 1.5rem;
   margin: 1rem 0;
   padding: 1rem;
@@ -98,38 +106,44 @@ i:not(.typing-icon):hover {
   text-align: center;
   color: var(--light-primaty-color);
   background-color: var(--accent-color);
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 8px;
 }
 
-#tags {
+.nav {
   display: flex;
-  flex-flow: row wrap;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--dark-primary-color);
+  color: var(--text-icons);
+  border-radius: 25px 25px 0 0;
+  z-index: 1;
 }
 
-#tags span {
-  margin: 0.2rem;
-  font-size: 0.8rem;
+.nav div {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.recipe-ingredients {
-  list-style-position: inside;
-  list-style-type: circle;
+.input-group {
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--secondary-text);
 }
 
-.recipe-ingredients h3, .instructions h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.input-group div:not(.submit-container) {
+  margin-top: 1rem;
 }
 
-.recipe-ingredients p {
-  margin-bottom: 1rem;
-}
-
-.recipe-ingredients li {
-  padding: 0.5rem 0;
-  font-style: italic;
-  font-weight: 300;
+.checkbox,
+.input-group button {
+  margin-right: 1rem;
 }
 
 .instructions {
@@ -155,11 +169,43 @@ i:not(.typing-icon):hover {
   text-decoration: underline;
 }
 
+#tags {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#tags span {
+  margin: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.recipe-ingredients {
+  list-style-position: inside;
+  list-style-type: circle;
+}
+
+.recipe-ingredients h3,
+.instructions h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-ingredients p {
+  margin-bottom: 1rem;
+}
+
+.recipe-ingredients li {
+  padding: 0.5rem 0;
+  font-style: italic;
+  font-weight: 300;
+}
+
 .ingredients-container {
   padding: 1.2rem;
   margin-top: 1.1rem;
   background-color: var(--text-icons);
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 8px;
   color: var(--light-primaty-color);
 }
 
@@ -180,34 +226,12 @@ i:not(.typing-icon):hover {
 }
 
 header h1 {
-  font-family: 'Pacifico', cursive;
+  font-family: Pacifico, cursive;
   font-size: 2rem;
 }
 
 .image img {
-  border-radius: 8px 8px 8px 8px;
-}
-
-.nav {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--dark-primary-color);
-  color: var(--text-icons);
-  border-radius: 25px 25px 0px 0px;
-  z-index: 1;
-}
-
-.nav div {
-  display: flex;
-  width: 100%;
-  max-width: 600px;
-  justify-content: space-between;
-  align-items: center;
+  border-radius: 8px;
 }
 
 #loading {
@@ -239,10 +263,6 @@ header h1 {
   display: none !important;
 }
 
-.selected i {
-  opacity: 1;
-}
-
 /* forms styles */
 
 #preferences-form {
@@ -252,8 +272,8 @@ header h1 {
   overflow-x: hidden;
 }
 
-/* Me inspirei nestes dois tutoriais para fazer as speech bubbles 
-https://codingislove.com/css-speech-bubbles/ 
+/* Me inspirei nestes dois tutoriais para fazer as speech bubbles
+https://codingislove.com/css-speech-bubbles/
 https://www.youtube.com/watch?v=Pi-dTBAi0t0
 */
 
@@ -274,10 +294,11 @@ div.questions {
   border-radius: 8px;
   margin-right: 20px;
   margin-bottom: 1.2rem;
-  box-shadow: 0px 3px 0px var(--secondary-text);
+  box-shadow: 0 3px 0 var(--secondary-text);
 }
 
-.speech-bubble, .input-group {
+.speech-bubble,
+.input-group {
   transform-origin: 0 0;
   transition-property: transform, opacity, height;
   transition-duration: 1s;
@@ -297,8 +318,8 @@ div.questions {
 
 .speech-bubble::before {
   content: "";
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   position: absolute;
   border-left: 10px solid var(--secondary-text);
   border-right: 10px solid transparent;
@@ -310,8 +331,8 @@ div.questions {
 
 .speech-bubble::after {
   content: "";
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   position: absolute;
   border-left: 9px solid var(--accent-color);
   border-right: 9px solid transparent;
@@ -325,26 +346,13 @@ div.questions {
   padding: 0.4rem 1rem;
 }
 
-.input-group {
-  padding: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--secondary-text);
-}
-
-.input-group div:not(.submit-container) {
-  margin-top: 1rem;
-}
-
-.checkbox, .input-group button {
-  margin-right: 1rem;
-}
-
 @media screen and (min-width: 600px) {
   #inside-container {
     flex-flow: row nowrap;
   }
 
-  #recipe-container, #drink-container {
+  #recipe-container,
+  #drink-container {
     display: flex;
   }
 
@@ -361,7 +369,8 @@ div.questions {
     margin-right: 1.5rem;
   }
 
-  #recipe-title, #drink-recipe-title  {
+  #recipe-title,
+  #drink-recipe-title {
     font-size: 1.2rem;
   }
 }
@@ -375,9 +384,6 @@ div.questions {
 
   .inside-container {
     padding-top: 10rem;
-  }
-
-  .inside-container {
     max-width: 1200px;
     margin: 0 auto;
   }
