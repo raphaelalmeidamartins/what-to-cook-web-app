@@ -1,0 +1,390 @@
+/* font-family: 'Pacifico', cursive; */
+
+@import url("/home/raphael/Documentos/GitHub/Projetos finalizados/to-do-list/.stylelintrc.json");
+
+/* font-family: 'Montserrat Alternates', sans-serif; */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Pacifico&display=swap");
+
+:root {
+  --dark-primary-color: #fbc02d;
+  --light-primaty-color: #fff9c4;
+  --shadow-light-primary-color: #b8b281;
+  --primary-color: #ffeb3b;
+  --text-icons: #212121;
+  --accent-color: #ff5722;
+  --primary-text: #212121;
+  --secondary-text: #757575;
+  --divider-color: #bdbdbd;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+body {
+  background-color: var(--light-primaty-color);
+  color: var(--text-icons);
+}
+
+main {
+  height: auto;
+  width: 100vw;
+}
+
+.selected i {
+  opacity: 1;
+}
+
+i:not(.typing-icon) {
+  cursor: pointer;
+  font-size: 1.3rem;
+  opacity: 0.4;
+}
+
+i:not(.typing-icon):hover {
+  opacity: 1;
+}
+
+#main-container {
+  position: relative;
+}
+
+.inside-container,
+.forms-inside-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem 4.8rem;
+}
+
+.forms-inside-container {
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#settings-modal {
+  background-color: var(--light-primaty-color);
+  margin: 0 auto;
+  max-width: 250px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 20px black;
+}
+
+#btn-reset-settings {
+  background-color: var(--accent-color);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#recipe-container,
+#drink-container {
+  overflow: hidden;
+}
+
+.image-panel,
+.ingredients-table-panel {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#recipe-title,
+#drink-recipe-title {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--light-primaty-color);
+  background-color: var(--accent-color);
+  border-radius: 8px;
+}
+
+.nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--dark-primary-color);
+  color: var(--text-icons);
+  border-radius: 25px 25px 0 0;
+  z-index: 1;
+}
+
+.nav div {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group {
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--secondary-text);
+}
+
+.input-group div:not(.submit-container) {
+  margin-top: 1rem;
+}
+
+.checkbox,
+.input-group button {
+  margin-right: 1rem;
+}
+
+.instructions {
+  margin-top: 1rem;
+}
+
+.instructions span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.instructions span button {
+  width: 50%;
+  margin-right: 1rem;
+  background-color: var(--accent-color) !important;
+  color: var(--light-primaty-color) !important;
+}
+
+.instructions span a {
+  color: var(--light-primaty-color);
+  text-decoration: underline;
+}
+
+#tags {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#tags span {
+  margin: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.recipe-ingredients {
+  list-style-position: inside;
+  list-style-type: circle;
+}
+
+.recipe-ingredients h3,
+.instructions h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-ingredients p {
+  margin-bottom: 1rem;
+}
+
+.recipe-ingredients li {
+  padding: 0.5rem 0;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.ingredients-container {
+  padding: 1.2rem;
+  margin-top: 1.1rem;
+  background-color: var(--text-icons);
+  border-radius: 8px;
+  color: var(--light-primaty-color);
+}
+
+.table {
+  margin-top: 1rem;
+}
+
+.header-container {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--light-primaty-color);
+  color: var(--text-icons);
+  z-index: 1;
+}
+
+header h1 {
+  font-family: Pacifico, cursive;
+  font-size: 2rem;
+}
+
+.image img {
+  border-radius: 8px;
+}
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--light-primaty-color);
+}
+
+#loading div {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/*  class to change the display and width */
+
+.visible {
+  display: block;
+}
+
+.invisible {
+  display: none !important;
+}
+
+/* forms styles */
+
+#preferences-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  overflow-x: hidden;
+}
+
+/* Me inspirei nestes dois tutoriais para fazer as speech bubbles
+https://codingislove.com/css-speech-bubbles/
+https://www.youtube.com/watch?v=Pi-dTBAi0t0
+*/
+
+div.questions {
+  height: 0;
+  overflow: hidden;
+  transition: height 400ms;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+}
+
+.speech-bubble {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--secondary-text);
+  background-color: var(--accent-color);
+  border-radius: 8px;
+  margin-right: 20px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 3px 0 var(--secondary-text);
+}
+
+.speech-bubble,
+.input-group {
+  transform-origin: 0 0;
+  transition-property: transform, opacity, height;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  border-radius: 8px;
+}
+
+.hidden {
+  transform: translateX(+100%);
+  opacity: 0;
+}
+
+.display {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.speech-bubble::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 10px solid var(--secondary-text);
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--secondary-text);
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  top: 6px;
+}
+
+.speech-bubble::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 9px solid var(--accent-color);
+  border-right: 9px solid transparent;
+  border-top: 9px solid var(--accent-color);
+  border-bottom: 9px solid transparent;
+  right: -18px;
+  top: 7px;
+}
+
+.typing {
+  padding: 0.4rem 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  #inside-container {
+    flex-flow: row nowrap;
+  }
+
+  #recipe-container,
+  #drink-container {
+    display: flex;
+  }
+
+  .ingredients-container {
+    margin-top: 0;
+  }
+
+  .ingredients-table-panel {
+    min-width: 60%;
+  }
+
+  .image-panel {
+    max-width: 300px;
+    margin-right: 1.5rem;
+  }
+
+  #recipe-title,
+  #drink-recipe-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .nav {
+    top: 64px;
+    bottom: unset;
+    border-radius: 0;
+  }
+
+  .inside-container {
+    padding-top: 10rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
