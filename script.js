@@ -1,43 +1,3 @@
-// ------------ FETCH FUNCTIONS START ------------
-
-// const urlGenerator = (keyword, storedArray) => {	
-// 	const url = storedArray.reduce((acc, urlString) => acc + urlString, `https://api.edamam.com/api/recipes/v2?type=public&q=${keyword}&app_id=7c7cd4bd&app_key=545204c90ab3de54ab8d84cd5aaba9dc`);
-// 	console.log(url);
-// 	return `${url}&random=true`;
-// };
-
-// //função fetch para buscar as receitas com palavra-chave na API
-// const fetchSearchRecipes = async (storedArray) => {
-// 	const searchElement = localStorage.getItem('searchElement');
-// 	const response = await fetch(urlGenerator(searchElement, storedArray));
-// 	const data = await response.json();
-// 	return data;
-// };
-
-
-// //função fetch para buscar as receitas de comida na API
-// const fetchFoodRecipes = async (storedArray) => {
-// 	const foodKeywords = ['chicken', 'beef', 'rice', 'beans', 'pasta', 'sauce', 'potato', 'salad', 'fish', 'seafood', 'vegetable', 'tomato', 'chinese', 'italian', 'french', 'pork', 'sausage', 'ham', 'pumpkin', 'egg', 'bread', 'pastry', 'dairy', 'cheese', 'soup', 'dressing', 'cereal', 'meat', 'bakery', 'turkey', 'pepper'];
-// 	const foodElement = foodKeywords[Math.floor(Math.random()*foodKeywords.length)];
-// 	const response = await fetch(urlGenerator(foodElement, storedArray));
-// 	const data = await response.json();
-// 	return data;
-// };
-
-
-// //função fetch para buscar as receitas de bebida na API
-// const fetchDrinkRecipes = async (storedArray) => {
-// 	const drinkKeywords = ['water', 'soda', 'vodka', 'gin', 'beer', 'wine', 'rum', 'juice'];
-// 	const drinkElement = drinkKeywords[Math.floor(Math.random()*drinkKeywords.length)];
-// 	const array = [...storedArray];
-// 	array.push('&dishType=drinks');
-// 	const response = await fetch(urlGenerator(drinkElement, array));
-// 	const data = await response.json();
-// 	return data;
-// };
-
-// ------------ FETCH FUNCTIONS END ------------
-
 const userPreferences = [];
 
 const addSearchLocal = () => {
@@ -66,7 +26,7 @@ const radioValuesLocalStorage = (nameInput) => {
 };
 
 //isso será colocado no script.js junto com as demais, na ordem apropriada
-localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
+// localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
 
 //função para extrair a primeira receita do objeto de resposta
 const extractRecipe = (data) => {
