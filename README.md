@@ -18,9 +18,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nemo nobis odit t
 
 ## :memo: Methodologies
 
-* Lorem ipsum
-* Lorem ipsum
-* Lorem ipsum
+* Mobile First
+* Test Driven Development (TDD)
+* Pair programming
 
 ## :hammer_and_wrench: Tools
 
