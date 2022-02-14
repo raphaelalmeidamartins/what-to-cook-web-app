@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="libs/bulma/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <title>What to cook</title>
-    <script src="interface.js" defer></script>
+    <script src="./src/fetchRecipes.js" defer></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -60,7 +61,12 @@
                             </ul>
                             <div class="instructions">
                                 <h3>Preparation</h3>
-                                <span><button id="recipe-btn-instructions" class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
+                                <span>
+                                    <button id="recipe-btn-instructions" class="button is-light">
+                                        <a id="linkFood" href="#" target="_blank">Instructions</a>
+                                    </button></a>
+                                    <a href="#" id="foodSource" target="_blank">on Serious Eats</a>
+                                </span>
                             </div>
                         </section>
 
@@ -122,7 +128,7 @@
                             <img id="drink-recipe-img" src="https://www.edamam.com/web-img/360/3602f6b23a224e5e9f22d0797c39aeca.jpg">
                         </figure>
                         <h2 id="drink-recipe-title">Grapefruit Blossom Aperitif</h2>
-                        <section id="tags">
+                        <section id="tagsDrink">
                             <span class="tag">Low-Fat</span>
                             <span class="tag">Low-Sodium</span>
                             <span class="tag">Vegan</span>
@@ -149,7 +155,12 @@
                             </ul>
                             <div class="instructions">
                                 <h3>Preparation</h3>
-                                <span><button id="drink-recipe-btn-instructions" class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
+                                <span>
+                                    <button id="recipe-btn-instructions" class="button is-light">
+                                        <a id="linkDrink" href="#" target="_blank">Instructions</a>
+                                    </button></a>
+                                    <a href="#" id="drinkSource" target="_blank">on Serious Eats</a>
+                                </span>
                             </div>
                         </section>
 

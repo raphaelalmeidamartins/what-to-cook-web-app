@@ -169,13 +169,13 @@ i:not(.typing-icon):hover {
   text-decoration: underline;
 }
 
-#tags {
+#tags #tagsDrink {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-#tags span {
+#tags span, #tagsDrink span {
   margin: 0.2rem;
   font-size: 0.8rem;
 }
