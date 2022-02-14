@@ -1,21 +1,6 @@
-const userPreferences = [];
-
-const addSearchLocal = () => {
-	const searchElement = encodeURIComponent(inputSearch.value);
-	localStorage.setItem('searchElement', searchElement);
-};
-
 //multipleCheckboxes serve para valores marcados no dietType e healthInfo, já que ambos são vários checkboxes; 
 //valorClass deve ser a classe ex: .dietType e .healthInfo; dietOrHealth é diet ou health;
 
-const multipleCheckboxes = (valorClass, dietOrHealth) => {
-	let answer = '';
-	Array.from(document.querySelectorAll(valorClass)).forEach((each) => {
-		if (each.checked) {
-			answer = `&${dietOrHealth}=${each.value}`;
-		}});
-	userPreferences.push(answer);
-};
 //colocar função acima em eventos dos buttons, se for usar button
 
 //função com parametro para nameInput => cuisineType, mealType e dishType: 
@@ -26,7 +11,6 @@ const radioValuesLocalStorage = (nameInput) => {
 };
 
 //isso será colocado no script.js junto com as demais, na ordem apropriada
-// localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
 
 //função para extrair a primeira receita do objeto de resposta
 const extractRecipe = (data) => {
@@ -220,7 +204,78 @@ const displayElement = (element) => {
 	element.classList.add('display');
 };
 
-const conversationFlow = (question) => {
+{/* <p class="speech-bubble hidden">Hi, Fulano, how are you doing?</p> */}
+
+const userPreferences = [];
+
+const multipleCheckboxes = (valorClass) => {
+	let answer = '';
+	[...document.getElementsByClassName(valorClass)].forEach((each) => {
+		console.log(each.value);
+		if (each.checked) {
+			answer += `&Health=${each.value}`;
+		}});
+	userPreferences.push(answer);
+};
+
+const addSearchSession = (input) => {
+	const searchElement = encodeURIComponent(input.value);
+	sessionStorage.setItem('searchElement', searchElement);
+};
+
+// const formButtonsListeners = (question) => {
+// 	[...document.querySelectorAll('.btn-start-over')]
+// 	.forEach((button) => {
+// 		button.addEventListener('click', () => {
+// 			localStorage.clear();
+// 			window.location.reload();
+// 		});
+// 	});
+// 	if (question === 'question-1') {
+// 		document.getElementById('btn-username')
+// 		.addEventListener('click', () => {
+// 			const username = document.getElementById('username');
+// 			localStorage.setItem('name', username.value);
+// 		});
+// 	}
+// 	if (question === 'question-2') {
+// 		document.getElementById('btn-restriction')
+// 		.addEventListener('click', () => {
+// 			multipleCheckboxes('checkbox');
+// 			localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
+// 		});
+// 	}
+// 	if (question === 'question-3') {
+// 	document.getElementById('btn-ingredients')
+// 		.addEventListener('click', () => {
+// 			addSearchSession(document.getElementById('ingredients'));
+// 		});
+// 	}
+// }
+
+[...document.querySelectorAll('.btn-start-over')]
+.forEach((button) => {
+	button.addEventListener('click', () => {
+		localStorage.clear();
+		window.location.reload();
+	});
+});
+	document.getElementById('btn-username')
+	.addEventListener('click', () => {
+		const username = document.getElementById('username');
+		localStorage.setItem('name', username.value);
+	});
+	document.getElementById('btn-restriction')
+	.addEventListener('click', () => {
+		multipleCheckboxes('checkbox');
+		localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
+	});
+document.getElementById('btn-ingredients')
+	.addEventListener('click', () => {
+		addSearchSession(document.getElementById('ingredients'));
+	});
+
+const conversationFlow = async (question) => {
 	question.style.height = 'fit-content';
 	[...question.children].forEach((currentBubble, index) => {
 		let delay = 1 * (index +1);
@@ -230,14 +285,14 @@ const conversationFlow = (question) => {
 		window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 	});
 	if (question.id === 'question-5') {
-		setTimeout(() => {
+		setTimeout(async () => {
 			formContainer.style.display = 'none';
 			navbar.style.display = 'flex';
 			allTabs.style.display = 'flex';
+			await categoryBtnClicker('food');
+			await categoryBtnClicker('drink');
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}, 4000);
-		localStorage.setItem('preferences', 'placeholder');
-		// localStorage.setItem('preferences', JSON.stringify(preferencesObj)); Exemplo de como pode substituir o placeholder;
 	}
 };
 
@@ -265,12 +320,14 @@ window.onload = async () => {
 	setTimeout(() => {
 		stopLoading();
 	}, 1500);
-	if (localStorage.length === 0) {
+	if (!localStorage.getItem('name') || !localStorage.getItem('userPreferences')) {
 		navbar.style.display = 'none';
 		allTabs.style.display = 'none';
 		conversationFlow(questionsArray[0]);
 	} else {
-		formContainer.style.display = 'none';
+		navbar.style.display = 'none';
+		allTabs.style.display = 'none';
+		conversationFlow(questionsArray[2]);
     await categoryBtnClicker('food');
     await categoryBtnClicker('drink');
   }

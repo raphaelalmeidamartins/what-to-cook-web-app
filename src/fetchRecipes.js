@@ -5,19 +5,22 @@ const urlGenerator = (keyword, storedArray) => {
 };
 
 //função fetch para buscar as receitas com palavra-chave na API
-const fetchSearchRecipes = async (storedArray) => {
-	const searchElement = localStorage.getItem('searchElement');
-	const response = await fetch(urlGenerator(searchElement, storedArray));
-	const data = await response.json();
-	return data;
-};
+// const fetchSearchRecipes = async (storedArray) => {
+// 	const searchElement = sessionStorage.getItem('searchElement');
+// 	const response = await fetch(urlGenerator(searchElement, storedArray));
+// 	const data = await response.json();
+// 	return data;
+// };
 
 
 //função fetch para buscar as receitas de comida na API
 const fetchFoodRecipes = async (storedArray) => {
-	const foodKeywords = ['chicken', 'beef', 'rice', 'beans', 'pasta', 'sauce', 'potato', 'salad', 'fish', 'seafood', 'vegetable', 'tomato', 'chinese', 'italian', 'french', 'pork', 'sausage', 'ham', 'pumpkin', 'egg', 'bread', 'pastry', 'dairy', 'cheese', 'soup', 'dressing', 'cereal', 'meat', 'bakery', 'turkey', 'pepper'];
-	const foodElement = foodKeywords[Math.floor(Math.random()*foodKeywords.length)];
-	const response = await fetch(urlGenerator(foodElement, storedArray));
+	let searchElement = sessionStorage.getItem('searchElement');
+	if (!searchElement) {
+		searchElement = ['chicken', 'beef', 'rice', 'beans', 'pasta', 'sauce', 'potato', 'salad', 'fish', 'seafood', 'vegetable', 'tomato', 'chinese', 'italian', 'french', 'pork', 'sausage', 'ham', 'pumpkin', 'egg', 'bread', 'pastry', 'dairy', 'cheese', 'soup', 'dressing', 'cereal', 'meat', 'bakery', 'turkey', 'pepper'];
+		searchElement = searchElement[Math.floor(Math.random()*searchElement.length)];
+	}
+	const response = await fetch(urlGenerator(searchElement, storedArray));
 	const data = await response.json();
 	return data;
 };

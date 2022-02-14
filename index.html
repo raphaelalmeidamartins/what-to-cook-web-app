@@ -272,38 +272,35 @@
             <form id="preferences-form" action="">
                 <div id="question-1" class="questions">
                     <p class="speech-bubble hidden">Hello, I am Fulana, and I will ask some questions about your food preferences before we get started</p>
-                    <p class="speech-bubble hidden">What kinds of food do you like?</p>
+                    <p class="speech-bubble hidden">What's your name?</p>
                     <div class="input-group hidden">
-                        <label class="label" for="liked-placeholder1"><input class="checkbox" type="checkbox" name="liked-foods" id="liked-placeholder1">Placeholder</label>
-                        <label class="label" for="liked-placeholder2"><input class="checkbox" type="checkbox" name="liked-foods" id="liked-placeholder2">Placeholder</label>
-                        <label class="label" for="liked-placeholder3"><input class="checkbox" type="checkbox" name="liked-foods" id="liked-placeholder3">Placeholder</label>
+                        <input class="input" type="text" name="username" placeholder="Enter your name" id="username">
                         <div class="form-button-container">
-                            <button class="button is-outlined is-danger">Start over</button>
-                            <button class="button next is-success">Next</button>
+                            <button class="button is-outlined is-danger btn-start-over">Start over</button>
+                            <button id="btn-username" class="button next is-success">Next</button>
                         </div>
                     </div>
                 </div>
                 <div id="question-2" class="questions">
-                    <p class="speech-bubble hidden">What kinds of food do you <strong>dislike</strong>?</p>
+                    <p class="speech-bubble hidden">Do you have any food restrictions?</p>
                     <div class="input-group hidden">
-                        <label class="label" for="disliked-placeholder1"><input class="checkbox" type="checkbox" name="disliked-foods" id="disliked-placeholder1">Placeholder</label>
-                        <label class="label" for="disliked-placeholder2"><input class="checkbox" type="checkbox" name="disliked-foods" id="disliked-placeholder2">Placeholder</label>
-                        <label class="label" for="disliked-placeholder3"><input class="checkbox" type="checkbox" name="disliked-foods" id="disliked-placeholder3">Placeholder</label>
+                        <label class="label" for="restricted-placeholder1"><input class="checkbox" type="checkbox" name="restricted-foods" id="restricted-placeholder1" value="vegan">vegan</label>
+                        <label class="label" for="restricted-placeholder2"><input class="checkbox" type="checkbox" name="restricted-foods" id="restricted-placeholder2" value="vegetarian">vegetarian</label>
+                        <label class="label" for="restricted-placeholder3"><input class="checkbox" type="checkbox" name="restricted-foods" id="restricted-placeholder3" value="dairy-free">dairy-free</label>
                         <div class="form-button-container">
-                            <button class="button is-outlined is-danger">Start over</button>
-                            <button class="button next is-success">Next</button>
+                            <button class="button is-outlined is-danger btn-start-over">Start over</button>
+                            <button id="btn-restriction" class="button next is-success">Next</button>
                         </div>
                     </div>
                 </div>
                 <div id="question-3" class="questions">
-                    <p class="speech-bubble hidden">Do you have any food restrictions?</p>
+                    <p class="speech-bubble hidden">What ingredients do you want to use?</strong>?</p>
+                    <p class="speech-bubble hidden">If you don't enter any ingredient, we will randomly generate the recipes for you</strong>?</p>
                     <div class="input-group hidden">
-                        <label class="label" for="restricted-placeholder1"><input class="checkbox" type="checkbox" name="restricted-foods" id="restricted-placeholder1">Placeholder</label>
-                        <label class="label" for="restricted-placeholder2"><input class="checkbox" type="checkbox" name="restricted-foods" id="restricted-placeholder2">Placeholder</label>
-                        <label class="label" for="restricted-placeholder3"><input class="checkbox" type="checkbox" name="restricted-foods" id="restricted-placeholder3">Placeholder</label>
+                        <input class="input" type="text" name="ingredients" placeholder="Enter the ingredients" id="ingredients">
                         <div class="form-button-container">
-                            <button class="button is-outlined is-danger">Start over</button>
-                            <button class="button next is-success">Next</button>
+                            <button class="button is-outlined is-danger btn-start-over">Start over</button>
+                            <button id="btn-ingredients" class="button next is-success">Next</button>
                         </div>
                     </div>
                 </div>
@@ -313,7 +310,7 @@
                     <p class="speech-bubble hidden">May I proceed with these preferences?</p>
                     <div class="input-group hidden">
                         <div class="form-button-container submit-container">
-                            <button class="button is-outlined is-danger">Start over</button>
+                            <button class="button is-outlined is-danger btn-start-over">Start over</button>
                             <button id="submit-button" class="button is-success">Ok</button>
                         </div>
                     </div>
