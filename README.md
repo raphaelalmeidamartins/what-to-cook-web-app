@@ -30,11 +30,11 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nemo nobis odit t
 * Jest
 * Bulma
 
-## Mobile version
+## :iphone: Mobile version
 
 _(Insert mobile preview screenshots here)_
 
-### Copyright disclaimer
+### :copyright: Copyright disclaimer
 
 We developed this project for learning purposes, all the code and documentation texts are our authorship, and the rights belong exclusively to us. It is allowed to download or clone the repository for study purposes. However, it is not allowed to publish full or partial copies. This disclaimer does not cover libraries and dependencies, which are subject to their respective licenses.
 
