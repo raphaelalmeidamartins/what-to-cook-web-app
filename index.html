@@ -17,6 +17,8 @@
         <header id="header" class="header-container">
             <h1>What to Cook</h1>
         </header>
+
+        <!-- Tabs' sections start -->
         <section id="main-container">
             <div class="inside-container">
                 <section id="recipe-container" class="visible">
@@ -61,6 +63,8 @@
                                 <span><button id="recipe-btn-instructions" class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
                             </div>
                         </section>
+
+                        <!-- nutrition table start -->
                         <table class="table is-hoverable">
                             <thead>
                                 <th>Quantity per serving</th>
@@ -108,6 +112,8 @@
                                 <td><span id="food-sodium-percent">16</span>%</td>
                             </tr>
                         </table>
+                        <!-- nutrition table end -->
+
                     </div>
                 </section>
                 <section id="drink-container" class="invisible">
@@ -146,6 +152,8 @@
                                 <span><button id="drink-recipe-btn-instructions" class="button is-light">Instructions</button><a href="#">on Serious Eats</a></span>
                             </div>
                         </section>
+
+                        <!-- nutrition table start -->
                         <table class="table is-hoverable">
                             <thead>
                                 <th>Quantity per serving</th>
@@ -193,8 +201,12 @@
                                 <td><span id="drink-sodium-percent">16</span>%</td>
                             </tr>
                         </table>
+                        <!-- nutrition table end -->
+
                     </div>
                 </section>
+                
+                <!-- modal start -->
                 <div class="modal">
                     <div class="modal-background"></div>
                     <div class="modal-content">
@@ -205,8 +217,12 @@
                     </div>
                     <button class="modal-close is-large" aria-label="close"></button>
                 </div>
+                <!-- modal end -->
+
             </div>
         </section>
+        <!-- Tabs' section end -->
+
         <nav id="navbar" class="nav">
             <div>
                 <span class="icon selected" id="food-icon" title="Food recipe">
@@ -224,6 +240,8 @@
             </div>
         </nav>
     </main>
+
+    <!-- logo attribution screen start -->
     <section id="loading">
         <div>
             <figure class="image is-square">
@@ -234,8 +252,12 @@
             </figure>
         </div>
     </section>
+    <!-- logo attribution screen end -->
+
     <section id="forms">
         <div class="forms-inside-container">
+
+            <!-- speech-bubbles' start -->
             <form id="preferences-form" action="">
                 <div id="question-1" class="questions">
                     <p class="speech-bubble hidden">Hello, I am Fulana, and I will ask some questions about your food preferences before we get started</p>
@@ -289,6 +311,8 @@
                     <p class="speech-bubble hidden">Generating random recipe suggestions...</p>
                 </div>
             </form>
+            <!-- speech-bubbles' end -->
+
         </div>
     </section>
 </body>
