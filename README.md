@@ -30,6 +30,8 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nemo nobis odit t
 * Jest
 * Bulma
 
+## Screenshots
+
 _(Insert mobile preview screenshots here)_
 
 ### Copyright disclaimer
