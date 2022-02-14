@@ -1,6 +1,6 @@
 # :fork_and_knife: What to Cook :cocktail:
 
-_(Insert preview gif here)_
+![Desktop preview](./imgs/screenshot-desktop.png)
 
 ## :page_with_curl: About
 
@@ -26,7 +26,9 @@ We developed a random recipe suggestions web app fetching for recipes data from 
 
 ## :iphone: Mobile version
 
-_(Insert mobile preview screenshots here)_
+![Mobile](./imgs/screenshot1.png)
+![Mobile](./imgs/screenshot2.png)
+![Mobile](./imgs/screenshot3.png)
 
 ### :copyright: Copyright disclaimer
 
