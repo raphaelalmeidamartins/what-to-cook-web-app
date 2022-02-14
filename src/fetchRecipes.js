@@ -34,8 +34,6 @@ const fetchDrinkRecipes = async (storedArray) => {
 	return data;
 };
 
-if (typeof module !== undefined) {
-	module.exports = { fetchSearchRecipes, fetchFoodRecipes, fetchDrinkRecipes, urlGenerator };
-}
+module.exports = { fetchSearchRecipes, fetchFoodRecipes, fetchDrinkRecipes, urlGenerator };
 
 //chaves de recipe que serão usadas: ['label', 'image', 'images'(obj), 'source', 'url', 'yield'(quantas porções rende - numero), 'dietLabels'(arr), 'healthLabels'(arr), 'cautions'(arr), 'ingredientLines'(arr - cada elemento é uma linha da receita), 'calories' (calorias totais de todas as porções), 'totalWeight', 'totalTime (tempo de preparo em minutos)', 'cuisineType' (arr), 'mealType' (arr), 'dishType' (arr), 'totalNutrients'(obj de obj - {label: 'Energy', quantity: 1617.7713676499998, unit: 'kcal'} - CHAVES QUE SERÃO USADAS: [ENERC_KCAL, FAT, CHOCDF, PROCNT, CHOLE, NA]), 'totalDaily'(obj - MESMAS OBSERVAÇÕES QUE O totalNutrients)]
