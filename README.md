@@ -4,7 +4,7 @@
 
 ## :page_with_curl: About
 
-HTML, CSS, and JavaScript group project developed [Laís Namatela](https://www.linkedin.com/in/la%C3%ADs-nametala/), [Raphael Martins](https://www.linkedin.com/in/raphaelameidamartins/), [Rafael Oliveira Elias](https://www.linkedin.com/in/rafael-oliveira-elias-865bb3154/) and [Wendryo Sales](https://www.linkedin.com/in/wendryosales/) by at the end of the Module 1 of the Trybe's Web Development course. 
+HTML, CSS, and JavaScript group project developed by [Laís Namatela](https://www.linkedin.com/in/la%C3%ADs-nametala/), [Raphael Martins](https://www.linkedin.com/in/raphaelameidamartins/), [Rafael Oliveira Elias](https://www.linkedin.com/in/rafael-oliveira-elias-865bb3154/) and [Wendryo Sales](https://www.linkedin.com/in/wendryosales/) by at the end of the Module 1 of the Trybe's Web Development course. 
 
 We developed a random recipe suggestions web app fetching for recipes data from the Edman's API. We also implemented a chat-bot to set user preferences.
 
