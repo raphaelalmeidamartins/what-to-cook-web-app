@@ -36,7 +36,7 @@ _(Insert mobile preview screenshots here)_
 
 ### Copyright disclaimer
 
-We developed this project for learning purposes, all the code and documentation texts, and the rights belong exclusively to us. It is allowed to download or clone the repository for study purposes. However, it is not allowed to publish full or partial copies. This disclaimer does not cover libraries and dependencies, which are subject to their respective licenses.
+We developed this project for learning purposes, all the code and documentation texts are our authorship, and the rights belong exclusively to us. It is allowed to download or clone the repository for study purposes. However, it is not allowed to publish full or partial copies. This disclaimer does not cover libraries and dependencies, which are subject to their respective licenses.
 
 We use the Edaman API to fetch the recipes' data.
 
