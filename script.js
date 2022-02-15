@@ -205,10 +205,10 @@ const addSearchSession = (input) => {
 
 document.getElementById('btn-username')
   .addEventListener('click', () => {
-		if (usernameInput.value) {
-			localStorage.setItem('name', username.value);
-			usernameInput.textContent = `, ${localStorage.getItem('name')}`;
-		}
+    if (usernameInput.value) {
+      localStorage.setItem('name', username.value);
+      usernameInput.textContent = `, ${localStorage.getItem('name')}`;
+    }
   });
 
 document.getElementById('btn-restriction')
@@ -246,13 +246,13 @@ const conversationFlow = async (question) => {
 nextButtons.forEach((currentButton) => {
   currentButton.addEventListener('click', (event) => {
     event.preventDefault();
-		if (currentButton.id === 'btn-username' && !usernameInput.value) {
-			window.alert('Please enter your name!');
-		} else {
-			const currentInputGroup = currentButton.parentElement.parentElement;
-			conversationFlow(currentInputGroup.parentElement.nextElementSibling);
-			currentInputGroup.remove();
-		}
+    if (currentButton.id === 'btn-username' && !usernameInput.value) {
+      window.alert('Please enter your name!');
+    } else {
+      const currentInputGroup = currentButton.parentElement.parentElement;
+      conversationFlow(currentInputGroup.parentElement.nextElementSibling);
+      currentInputGroup.remove();
+    }
   });
 });
 
@@ -278,9 +278,13 @@ window.onload = async () => {
   } else {
     navbar.style.display = 'none';
     allTabs.style.display = 'none';
-		usernameSpan.textContent = `, ${localStorage.getItem('name')}`;
-		conversationFlow(questionsArray[2]);
-    await categoryBtnClicker('food');
-    await categoryBtnClicker('drink');
+    usernameSpan.textContent = `, ${localStorage.getItem('name')}`;
+    conversationFlow(questionsArray[2]);
+		try {
+			await categoryBtnClicker('food');
+			await categoryBtnClicker('drink');
+		} catch {
+			window.alert('Error: the maximum number of request per minute has been exceeded. Just wait a minute and try again.');
+		}
   }
 };
