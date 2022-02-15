@@ -183,7 +183,6 @@ const userPreferences = [];
 const multipleCheckboxes = (valorClass) => {
   let answer = '';
   [...document.getElementsByClassName(valorClass)].forEach((each) => {
-    console.log(each.value);
     if (each.checked) {
       answer += `&Health=${each.value}`;
     }});
