@@ -136,6 +136,7 @@ const resetSettingsButton = document.querySelector('#btn-reset-settings');
 const formContainer = document.querySelector('#forms');
 const form = document.querySelector('#preferences-form');
 const questionsArray = [...form.children];
+const usernameInput = document.getElementById('username');
 const usernameSpan = document.getElementById('username-span');
 const nextButtons = document.querySelectorAll('.is-success');
 
@@ -201,17 +202,21 @@ const addSearchSession = (input) => {
       window.location.reload();
     });
   });
+
 document.getElementById('btn-username')
   .addEventListener('click', () => {
-    const username = document.getElementById('username');
-    localStorage.setItem('name', username.value);
-		usernameSpan.textContent = `, ${localStorage.getItem('name')}`;
+		if (usernameInput.value) {
+			localStorage.setItem('name', username.value);
+			usernameInput.textContent = `, ${localStorage.getItem('name')}`;
+		}
   });
+
 document.getElementById('btn-restriction')
   .addEventListener('click', () => {
     multipleCheckboxes('checkbox');
     localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
   });
+
 document.getElementById('btn-ingredients')
   .addEventListener('click', () => {
     addSearchSession(document.getElementById('ingredients'));
@@ -241,9 +246,13 @@ const conversationFlow = async (question) => {
 nextButtons.forEach((currentButton) => {
   currentButton.addEventListener('click', (event) => {
     event.preventDefault();
-    const currentInputGroup = currentButton.parentElement.parentElement;
-    conversationFlow(currentInputGroup.parentElement.nextElementSibling);
-    currentInputGroup.remove();
+		if (currentButton.id === 'btn-username' && !usernameInput.value) {
+			window.alert('Please enter your name!');
+		} else {
+			const currentInputGroup = currentButton.parentElement.parentElement;
+			conversationFlow(currentInputGroup.parentElement.nextElementSibling);
+			currentInputGroup.remove();
+		}
   });
 });
 
