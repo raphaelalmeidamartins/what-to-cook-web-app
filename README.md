@@ -26,9 +26,7 @@ We developed a random recipe suggestions web app fetching for recipes data from 
 
 ## :iphone: Mobile version
 
-![Mobile](./imgs/screenshot1.png)
-![Mobile](./imgs/screenshot2.png)
-![Mobile](./imgs/screenshot3.png)
+![Mobile](./imgs/Mobile-preview.png)
 
 ### :copyright: Copyright disclaimer
 
