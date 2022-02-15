@@ -96,8 +96,6 @@ function generateRecipe (data, category) {
   }
 }
 
-// função que será usada como listener para food, search e drink
-// sei que já existe uma listener para o efeito na branch de front-end (changeTab), então seria interessante colocar essa função aqui dentro
 async function categoryBtnClicker(category) {
   const storedArray = JSON.parse(localStorage.getItem('userPreferences'));
   let data;
@@ -138,6 +136,7 @@ const resetSettingsButton = document.querySelector('#btn-reset-settings');
 const formContainer = document.querySelector('#forms');
 const form = document.querySelector('#preferences-form');
 const questionsArray = [...form.children];
+const usernameSpan = document.getElementById('username-span');
 const nextButtons = document.querySelectorAll('.is-success');
 
 // functions
@@ -206,6 +205,7 @@ document.getElementById('btn-username')
   .addEventListener('click', () => {
     const username = document.getElementById('username');
     localStorage.setItem('name', username.value);
+		usernameSpan.textContent = `, ${localStorage.getItem('name')}`;
   });
 document.getElementById('btn-restriction')
   .addEventListener('click', () => {
@@ -269,7 +269,8 @@ window.onload = async () => {
   } else {
     navbar.style.display = 'none';
     allTabs.style.display = 'none';
-    conversationFlow(questionsArray[2]);
+		usernameSpan.textContent = `, ${localStorage.getItem('name')}`;
+		conversationFlow(questionsArray[2]);
     await categoryBtnClicker('food');
     await categoryBtnClicker('drink');
   }
