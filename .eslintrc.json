@@ -26,5 +26,13 @@
             "error",
             "always"
         ]
-    }
+    },
+    "overrides": [
+        {
+          "files": ["script.js"],
+          "rules": {
+            "no-undef": "off"
+          }
+        }
+    ]
 }
