@@ -175,7 +175,8 @@ i:not(.typing-icon):hover {
   justify-content: center;
 }
 
-#tags span, #tagsdrink span {
+#tags span,
+#tagsdrink span {
   margin: 0.2rem;
   font-size: 0.8rem;
 }
