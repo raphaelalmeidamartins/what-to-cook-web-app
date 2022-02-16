@@ -279,11 +279,11 @@ window.onload = async () => {
     allTabs.style.display = 'none';
     usernameSpan.textContent = `, ${localStorage.getItem('name')}`;
     conversationFlow(questionsArray[2]);
-		try {
-			await categoryBtnClicker('food');
-			await categoryBtnClicker('drink');
-		} catch {
-			window.alert('Error: the maximum number of request per minute has been exceeded. Just wait a minute and try again.');
-		}
+    try {
+      await categoryBtnClicker('food');
+      await categoryBtnClicker('drink');
+    } catch {
+      window.alert('Error: the maximum number of request per minute has been exceeded. Just wait a minute and try again.');
+    }
   }
 };
