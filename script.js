@@ -122,11 +122,12 @@ function generateRecipe(data, category) {
     addAllTags(dietLabels, healthLabels, cautions, '');
     const recipeIngredients = document.getElementById('recipe-ingredients');
     while (
-      recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling
+      recipeIngredients
+        .firstElementChild
         .nextElementSibling
-    ) {
-      recipeIngredients.removeChild(recipeIngredients.lastChild);
-    }
+        .nextElementSibling
+        .nextElementSibling
+    ) recipeIngredients.removeChild(recipeIngredients.lastChild);
     ingredientLines.forEach((each) => {
       const li = document.createElement('li');
       li.innerText = each;
@@ -142,11 +143,12 @@ function generateRecipe(data, category) {
       'drink-recipe-ingredients'
     );
     while (
-      recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling
+      recipeIngredients
+        .firstElementChild
         .nextElementSibling
-    ) {
-      recipeIngredients.removeChild(recipeIngredients.lastChild);
-    }
+        .nextElementSibling
+        .nextElementSibling
+    ) recipeIngredients.removeChild(recipeIngredients.lastChild);
     ingredientLines.forEach((each) => {
       const li = document.createElement('li');
       li.innerText = each;
@@ -229,6 +231,7 @@ refreshIcon.addEventListener('click', () => window.location.reload());
 modalCloseButton.addEventListener('click', () =>
   modal.classList.remove('is-active')
 );
+
 resetSettingsButton.addEventListener('click', () => {
   localStorage.clear();
   window.location.reload();
