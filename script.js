@@ -1,7 +1,7 @@
 const extractRecipe = (data) => {
   const { hits } = data;
   const { recipe } = hits[0];
-  return recipe;  
+  return recipe;
 };
 
 function selectorSorter(category, tag) {
@@ -10,7 +10,7 @@ function selectorSorter(category, tag) {
   if (category === 'search') return document.querySelector(`#search-${tag}`);
 }
 
-function removeEveryChild(object) { 
+function removeEveryChild(object) {
   object.innerHTML = '';
 }
 
@@ -28,37 +28,88 @@ function addAllTags(dietLabels, healthLabels, cautions, category) {
 }
 
 function tableValuesRefresh(category, nutrients, daily, servings) {
-  const standardDataIds = ['-calories-data', '-carbs-data', '-proteins-data', '-saturatedfat-data', '-transfat-data', '-totalfat-data', '-totalfiber-data', '-sodium-data'];
-  const standardPercentIds = ['-calories-percent', '-carbs-percent', '-proteins-percent', '-saturatedfat-percent', '-transfat-percent', '-totalfat-percent', '-totalfiber-percent', '-sodium-percent'];
-  const standardKeys = ['ENERC_KCAL', 'CHOCDF', 'PROCNT', 'FASAT', 'FATRN', 'FAT', 'FIBTG', 'NA'];
+  const standardDataIds = [
+    '-calories-data',
+    '-carbs-data',
+    '-proteins-data',
+    '-saturatedfat-data',
+    '-transfat-data',
+    '-totalfat-data',
+    '-totalfiber-data',
+    '-sodium-data',
+  ];
+  const standardPercentIds = [
+    '-calories-percent',
+    '-carbs-percent',
+    '-proteins-percent',
+    '-saturatedfat-percent',
+    '-transfat-percent',
+    '-totalfat-percent',
+    '-totalfiber-percent',
+    '-sodium-percent',
+  ];
+  const standardKeys = [
+    'ENERC_KCAL',
+    'CHOCDF',
+    'PROCNT',
+    'FASAT',
+    'FATRN',
+    'FAT',
+    'FIBTG',
+    'NA',
+  ];
 
-  standardDataIds.forEach((id, index) => document.getElementById(`${category}${id}`).innerText = Math.floor(nutrients[standardKeys[index]].quantity / servings));
+  standardDataIds.forEach(
+    (id, index) =>
+      (document.getElementById(`${category}${id}`).innerText = Math.floor(
+        nutrients[standardKeys[index]].quantity / servings
+      ))
+  );
 
   standardPercentIds.forEach((id, index) => {
     if (!daily[standardKeys[index]]) {
       document.getElementById(`${category}${id}`).innerText = 0;
     } else {
-      document.getElementById(`${category}${id}`).innerText = Math.floor(daily[standardKeys[index]].quantity / servings);
+      document.getElementById(`${category}${id}`).innerText = Math.floor(
+        daily[standardKeys[index]].quantity / servings
+      );
     }
   });
 }
 
 function innerTxtChanger(category, id, text) {
-  const changedElement = selectorSorter(category, id); 
+  const changedElement = selectorSorter(category, id);
   changedElement.innerText = text;
 }
 
-function generateRecipe (data, category) {
-  const { label, image, source, url, yield: servings, dietLabels, healthLabels, cautions, ingredientLines, totalTime, totalNutrients, totalDaily } = extractRecipe(data);
+function generateRecipe(data, category) {
+  const {
+    label,
+    image,
+    source,
+    url,
+    yield: servings,
+    dietLabels,
+    healthLabels,
+    cautions,
+    ingredientLines,
+    totalTime,
+    totalNutrients,
+    totalDaily,
+  } = extractRecipe(data);
 
   tableValuesRefresh(category, totalNutrients, totalDaily, servings);
-	
+
   const imgContainer = selectorSorter(category, 'recipe-img');
   imgContainer.src = image;
 
   innerTxtChanger(category, 'recipe-title', label);
   innerTxtChanger(category, 'prepar-time', totalTime);
-  innerTxtChanger(category, 'recipe-ingredients-number', (ingredientLines.length - 1));
+  innerTxtChanger(
+    category,
+    'recipe-ingredients-number',
+    ingredientLines.length - 1
+  );
   innerTxtChanger(category, 'servings-number', servings);
 
   const splitUrl = url.split('/');
@@ -69,8 +120,11 @@ function generateRecipe (data, category) {
     document.getElementById('foodSource').innerText = `on ${source}`;
 
     addAllTags(dietLabels, healthLabels, cautions, '');
-    const recipeIngredients = document.getElementById('recipe-ingredients'); 
-    while (recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling) {
+    const recipeIngredients = document.getElementById('recipe-ingredients');
+    while (
+      recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling
+        .nextElementSibling
+    ) {
       recipeIngredients.removeChild(recipeIngredients.lastChild);
     }
     ingredientLines.forEach((each) => {
@@ -84,8 +138,13 @@ function generateRecipe (data, category) {
     document.getElementById('drinkSource').href = baseUrl;
     document.getElementById('drinkSource').innerText = `on ${source}`;
     addAllTags(dietLabels, healthLabels, cautions, category);
-    const recipeIngredients = document.getElementById('drink-recipe-ingredients'); 
-    while (recipeIngredients.firstElementChild.nextElementSibling.	nextElementSibling.nextElementSibling) {
+    const recipeIngredients = document.getElementById(
+      'drink-recipe-ingredients'
+    );
+    while (
+      recipeIngredients.firstElementChild.nextElementSibling.nextElementSibling
+        .nextElementSibling
+    ) {
       recipeIngredients.removeChild(recipeIngredients.lastChild);
     }
     ingredientLines.forEach((each) => {
@@ -167,7 +226,9 @@ drinkIcon.addEventListener('click', () => changeTab(tabDrink, drinkIcon));
 settingsIcon.addEventListener('click', () => displayModal(modal, settingsIcon));
 refreshIcon.addEventListener('click', () => window.location.reload());
 
-modalCloseButton.addEventListener('click', () => modal.classList.remove('is-active'));
+modalCloseButton.addEventListener('click', () =>
+  modal.classList.remove('is-active')
+);
 resetSettingsButton.addEventListener('click', () => {
   localStorage.clear();
   window.location.reload();
@@ -185,7 +246,8 @@ const multipleCheckboxes = (valorClass) => {
   [...document.getElementsByClassName(valorClass)].forEach((each) => {
     if (each.checked) {
       answer += `&Health=${each.value}`;
-    }});
+    }
+  });
   userPreferences.push(answer);
 };
 
@@ -194,37 +256,33 @@ const addSearchSession = (input) => {
   sessionStorage.setItem('searchElement', searchElement);
 };
 
-[...document.querySelectorAll('.btn-start-over')]
-  .forEach((button) => {
-    button.addEventListener('click', () => {
-      localStorage.clear();
-      window.location.reload();
-    });
+[...document.querySelectorAll('.btn-start-over')].forEach((button) => {
+  button.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.reload();
   });
+});
 
-document.getElementById('btn-username')
-  .addEventListener('click', () => {
-    if (usernameInput.value) {
-      localStorage.setItem('name', username.value);
-      usernameInput.textContent = `, ${localStorage.getItem('name')}`;
-    }
-  });
+document.getElementById('btn-username').addEventListener('click', () => {
+  if (usernameInput.value) {
+    localStorage.setItem('name', username.value);
+    usernameInput.textContent = `, ${localStorage.getItem('name')}`;
+  }
+});
 
-document.getElementById('btn-restriction')
-  .addEventListener('click', () => {
-    multipleCheckboxes('checkbox');
-    localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
-  });
+document.getElementById('btn-restriction').addEventListener('click', () => {
+  multipleCheckboxes('checkbox');
+  localStorage.setItem('userPreferences', JSON.stringify(userPreferences));
+});
 
-document.getElementById('btn-ingredients')
-  .addEventListener('click', () => {
-    addSearchSession(document.getElementById('ingredients'));
-  });
+document.getElementById('btn-ingredients').addEventListener('click', () => {
+  addSearchSession(document.getElementById('ingredients'));
+});
 
 const conversationFlow = async (question) => {
   question.style.height = 'fit-content';
   [...question.children].forEach((currentBubble, index) => {
-    let delay = 1 * (index +1);
+    let delay = 1 * (index + 1);
     currentBubble.style.transitionDelay = `${delay}s`;
     currentBubble.style.display = 'block';
     displayElement(currentBubble);
@@ -270,7 +328,10 @@ window.onload = async () => {
   setTimeout(() => {
     stopLoading();
   }, 1500);
-  if (!localStorage.getItem('name') || !localStorage.getItem('userPreferences')) {
+  if (
+    !localStorage.getItem('name') ||
+    !localStorage.getItem('userPreferences')
+  ) {
     navbar.style.display = 'none';
     allTabs.style.display = 'none';
     conversationFlow(questionsArray[0]);
@@ -283,7 +344,9 @@ window.onload = async () => {
       await categoryBtnClicker('food');
       await categoryBtnClicker('drink');
     } catch {
-      window.alert('Error: the maximum number of request per minute has been exceeded. Just wait a minute and try again.');
+      window.alert(
+        'Error: the maximum number of request per minute has been exceeded. Just wait a minute and try again.'
+      );
     }
   }
 };
