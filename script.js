@@ -59,12 +59,10 @@ function tableValuesRefresh(category, nutrients, daily, servings) {
     'NA',
   ];
 
-  standardDataIds.forEach(
-    (id, index) =>
-      (document.getElementById(`${category}${id}`).innerText = Math.floor(
-        nutrients[standardKeys[index]].quantity / servings
-      ))
-  );
+  standardDataIds.forEach((id, index) => {
+    document.getElementById(`${category}${id}`)
+      .innerText = Math.floor(nutrients[standardKeys[index]].quantity / servings)
+  });
 
   standardPercentIds.forEach((id, index) => {
     if (!daily[standardKeys[index]]) {
