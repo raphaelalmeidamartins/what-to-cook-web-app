@@ -242,9 +242,9 @@ const displayElement = (element) => {
 
 const userPreferences = [];
 
-const multipleCheckboxes = (valorClass) => {
+const multipleCheckboxes = (className) => {
   let answer = '';
-  [...document.getElementsByClassName(valorClass)].forEach((each) => {
+  [...document.getElementsByClassName(className)].forEach((each) => {
     if (each.checked) {
       answer += `&Health=${each.value}`;
     }
