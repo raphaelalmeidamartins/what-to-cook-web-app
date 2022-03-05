@@ -23,6 +23,7 @@ We developed a random recipe suggestions web app fetching for recipes data from 
 * JavaScript ES6+
 * Jest
 * Bulma
+* Font Awesome (icon library)
 
 ## :iphone: Mobile version
 
