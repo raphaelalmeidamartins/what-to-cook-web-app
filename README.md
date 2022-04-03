@@ -10,6 +10,16 @@ We developed a random recipe suggestions web app fetching for recipes data from 
 
 [Click here](https://raphaelalmeidamartins.github.io/what-to-cook-web-app) to check out the final version of the project on your browser.
 
+## :man_technologist: Developed Skills
+
+* Create a brand new project from scratch using all the content we learned during the module
+* Use a public API to fetch data
+* Create and test the asynchronous functions using TDD
+* Manipulate HTML elements with the DOM API
+* React to user interations by using event listeners
+* Implement a responsive design with CSS flexbox and media queries
+* The project was non-evaluative
+
 ## :memo: Methodologies
 
 * Mobile First
